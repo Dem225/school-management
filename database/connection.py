@@ -71,12 +71,12 @@ def Supprimer_Etudiant():
 
 def Rechercher_Etudiant():
     
-   
-    cursor.execute("SELECT * FROM ÉTUDIANTS ")
+    unique_recherche=int(input("ENTREZ L'ETUDIANTS QUE VOUS RECHERCHE A PARTIE DE L'ID :" ))
+    cursor.execute("SELECT * FROM ÉTUDIANTS id=? " (unique_recherche,))
     for i in cursor.fetchall():
         print(i)
 
-Ajouter_Etudiant()
+Rechercher_Etudiant()
 
 cursor.close()
 conex.close()
