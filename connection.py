@@ -19,27 +19,39 @@ conex.commit()
 def chec_names(name):
     if not name:
         raise ValueError("Le prénom et le nom de famille ne peuvent pas être vides.")
-    special_characters = string.punctuation + string.digits
+    special_characters = string.punctuation
     for character in name:
         if character in special_characters:
             raise ValueError(f"Nom ou prénom invalide : {name}")
 
 def Ajouter_Etudiant():
-    nom = input("Entrez votre nom : ").strip().upper()       
+    
+    
+    nom = input("Entrez votre nom : ").strip().upper()
     prenom = input("Entrez votre prénom : ").strip().title() 
     chec_names(nom)
     chec_names(prenom)
-    age = int(input("Entrez votre âge : "))
+    
+    while True:
+        try:
+            age = int(input("Entrez votre âge : "))
+        except ValueError:
+            print("entrez un nombree entier")
+        break
     classe = input("Entrez votre classe : ").strip().upper()
     matricule = input("Veuillez entrer le matricule : ").strip()
-    
+            
     cursor.execute("""
-        INSERT INTO ÉTUDIANTS (nom, prénom, âge, classe, matricule)
-        VALUES (?, ?, ?, ?, ?)
-    """, (nom, prenom, age, classe, matricule))
-   
+                INSERT INTO ÉTUDIANTS (nom, prénom, âge, classe, matricule)
+                VALUES (?, ?, ?, ?, ?)
+            """, (nom, prenom, age, classe, matricule))
+        
     conex.commit()
     print(f"Succès : L'étudiant {prenom} {nom} a bien été ajouté.")
+
+
+
+
 
 def Modifier_Etudiant():
     print(" MISE A JOUR DES INFORMATION DE LA BASE DE NONNE ")
@@ -60,7 +72,6 @@ def Modifier_Etudiant():
     print("L'étudiant a été modifié.")
 
 def Supprimer_Etudiant():
-   
     id_cible = int(input("Entrez l'ID de l'étudiant à supprimer : "))
     
     cursor.execute("DELETE FROM ÉTUDIANTS WHERE id = ?", (id_cible,))
@@ -69,14 +80,34 @@ def Supprimer_Etudiant():
     
     print("L'étudiant a été supprimé avec succès.")
 
-def Rechercher_Etudiant():
-    
-    unique_recherche=int(input("ENTREZ L'ETUDIANTS QUE VOUS RECHERCHE A PARTIE DE L'ID :" ))
-    cursor.execute("SELECT * FROM ÉTUDIANTS id=? " (unique_recherche,))
+def Unique_Recherche_Etudiant():
+    unique_recherche = int(input("ENTREZ L'ETUDIANTS QUE VOUS RECHERCHE A PARTIE DE L'ID :" ))
+    cursor.execute("SELECT * FROM ÉTUDIANTS  WHERE id=? ", (unique_recherche, ))
     for i in cursor.fetchall():
-        print(i)
+        print(f"Voici  les donné de l'étudiant que vous avez recherche\n {i}")
 
-Rechercher_Etudiant()
+def listes_Etudiant():
+    while True:
+        print("\n--- MENU ---")
+        print("1. VOULEZ-VOUS LISTÉS TOUT LES ÈTUDIANT .")
+        print("2.VOULEZ-VOUS QUITTÉ ?.")
+        
+        Choix = input("FAITE VOTRE CHOIX :")
+        
+        if Choix == "1": 
+            cursor.execute("SELECT * FROM ÉTUDIANTS ")
+            resultsats = cursor.fetchall()
+            print(f"VOICI LA LISTE DE TOUS LES ÉTUDIANTS QUI EXISTENT DANS LA DB : ")
+            for resultat in resultsats:
+                print(resultat)
+            break
+        elif Choix == "2":
+            print("MERCI BEAUCOUP POUR LA VISTE ")
+            break
+        else:
+            print("Option invalide. Choisissez 1 ou 2.")
+        
+Ajouter_Etudiant()
 
 cursor.close()
 conex.close()
