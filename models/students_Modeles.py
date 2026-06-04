@@ -33,13 +33,14 @@ class studentsModel(ManagerBase):
 
     def supprimer_etudiant(self, id_teacher):
 
-        self.cusor.execute("DELETE FROM students  WHERE id = ? ", (id_teacher,))
+        self.cusor.execute("DELETE FROM students  WHERE id = ? ", (id_teacher,  ))
         self.connecte.commit()
 
     def Rechercher_etudiant(self, id_students):
 
-        self.cusor.execute("SELECT * FROM students WHERE id=? ", (id_students))
-        self.connecte.commit()
+        self.cusor.execute("SELECT * FROM students WHERE id=? ", (id_students, ))
+        return self.cusor.fetchall()
+        
 
         
     def Lister_etudiant(self):

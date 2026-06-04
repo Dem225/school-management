@@ -22,24 +22,23 @@ class ProfesseurModel(ManagerBase):
                 INSERT INTO teachers (nom, matiere)
                 VALUES (?, ?)
             """,
-            (nom, matiere),
+            (nom, matiere ),
         )
 
         self.connecte.commit()
 
     def supprimer(self, id_teacher):
 
-        self.cusor.execute("DELETE FROM teachers  WHERE id = ? ", (id_teacher,))
+        self.cusor.execute("DELETE FROM teachers  WHERE id = ? ", (id_teacher, ))
         self.connecte.commit()
 
-    def Modifier(self, matiere):
-        self.cusor.execute("UPDATE teachers SET matiere = ? WHERE id=? ", (matiere))
+    def Modifier(self, matiere,id_teacher):
+        self.cusor.execute("UPDATE teachers SET matiere = ? WHERE id=? ", (matiere ,id_teacher))
         self.connecte.commit()
     
     def Rechercher(self,id_teacher):
-      self.cusor.execute("SELECT * FROM WHERE id= ?",(id_teacher))
-      self.cusor.fetchall()
-      self.connecte.commit()
+      self.cusor.execute("SELECT * FROM teachers  WHERE id= ?",(id_teacher ,))
+      return self.cusor.fetchall()
 
       
     def close(self):
