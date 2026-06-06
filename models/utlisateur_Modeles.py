@@ -24,6 +24,7 @@ class Utilisateur(ManagerBase):
         
     def supprimer_utilisateur(self, id_user):
         self.cusor.execute("DELETE FROM users WHERE id = ?", (id_user,))
+        self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='users'")
         self.connecte.commit()
     
     def modifier_utilisateur(self, id_user, name, role):
@@ -38,6 +39,7 @@ class Utilisateur(ManagerBase):
         self.cusor.execute("""
             SELECT * FROM users WHERE name = ? AND password = ?
         """, (nom, password))
+
         return self.cusor.fetchone()
 
     def supprimer_tous_les_utilisateurs(self):
