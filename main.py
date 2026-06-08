@@ -11,7 +11,7 @@ def gerer_choix_admin():
     while True:
         print(MENU_PRINCIPALE_ADMINE)
         choix = input("Entrez votre choix : ")
-        
+        print(MENU_GESTION_DES_UTILISATEURS)
         if choix == '1':
             Choix_Menu_UTILISATEURS=input("Entrez votre choix ?:")
             if Choix_Menu_UTILISATEURS=='1':

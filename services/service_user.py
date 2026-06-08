@@ -16,16 +16,23 @@ class GestionAdmin:
         role = input("entrez votre role : ")
         password = input("entrez votre mot de passe : ")
         self.modele_user.ajouter_utilisateur(nom, role, password)
+        print("Utilisateur ajouté avec succès.")
 
     def supprimer_utilisateur(self):
         id_user = input("entrez ID de utlisateur que vous voulez surpprimer : ")
         self.modele_user.supprimer_utilisateur(id_user)
+        print("Utilisateur supprimé avec succès.")
 
     def modifier_utilisateur(self):
         id_user = input("entrez votre id_user : ")
         name = input("entrez votre name : ")
         role = input("entrez votre role : ")
         self.modele_user.modifier_utilisateur(id_user, name, role)
+        print("Utilisateur modifié avec succès.")
+        
+    def rechercher_utilisateur(self):
+        id_user = input("entrez votre id_user : ")
+        self.modele_user.rechercher_utilisateur(id_user)
 
     # ==========================================
     # GESTION DES PROFESSEURS
