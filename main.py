@@ -11,9 +11,10 @@ def gerer_choix_admin():
     while True:
         print(MENU_PRINCIPALE_ADMINE)
         choix = input("Entrez votre choix : ")
-        print(MENU_GESTION_DES_UTILISATEURS)
+        
         if choix == '1':
-            Choix_Menu_UTILISATEURS=input("Entrez votre choix ?:")
+            print(MENU_GESTION_DES_UTILISATEURS)
+            Choix_Menu_UTILISATEURS=input("Entrez votre choix :")
             if Choix_Menu_UTILISATEURS=='1':
                 gestion.ajouter_utilisateur()
             elif Choix_Menu_UTILISATEURS=='2':
@@ -21,8 +22,16 @@ def gerer_choix_admin():
             elif Choix_Menu_UTILISATEURS=='3':
                 gestion.modifier_utilisateur()
         elif choix == '2':
-           
-            gestion.ajouter_professeur()
+            print(MENU_GESTION_DES_PROFESSEURS)
+            Choix_Menu_PROFESSEURS=input("Entrez votre choix :")
+            if Choix_Menu_PROFESSEURS=='1':
+                gestion.ajouter_professeur()
+            elif Choix_Menu_PROFESSEURS=='2':
+                gestion.supprimer_professeur()
+            elif Choix_Menu_PROFESSEURS=='3':
+                gestion.modifier_professeur()
+            elif Choix_Menu_PROFESSEURS=='4':
+                gestion.rechercher_professeur()
             
         elif choix == '3':
             print("Déconnexion réussie. Au revoir !")

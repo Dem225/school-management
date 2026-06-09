@@ -12,6 +12,7 @@ class GestionAdmin:
     # GESTION DES UTILISATEURS
     # ==========================================
     def ajouter_utilisateur(self):
+        print("\n    ")
         nom = input("entrez votre nom : ")
         role = input("entrez votre role : ")
         password = input("entrez votre mot de passe : ")
@@ -19,11 +20,13 @@ class GestionAdmin:
         print("Utilisateur ajouté avec succès.")
 
     def supprimer_utilisateur(self):
+        print("\n    ")
         id_user = input("entrez ID de utlisateur que vous voulez surpprimer : ")
         self.modele_user.supprimer_utilisateur(id_user)
         print("Utilisateur supprimé avec succès.")
 
     def modifier_utilisateur(self):
+        print("\n    ")
         id_user = input("entrez votre id_user : ")
         name = input("entrez votre name : ")
         role = input("entrez votre role : ")
@@ -38,38 +41,52 @@ class GestionAdmin:
     # GESTION DES PROFESSEURS
     # ==========================================
     def ajouter_professeur(self):
-        id_user = input("entrez votre id_user : ")
+        print("\n    ")
+        non = input("entrez votre non : ")
         matiere = input("entrez votre matiere : ")
-        self.modele_prof.Ajouter(id_user, matiere)
+        self.modele_prof.Ajouter(non, matiere)
+        print("Utilisateur modifié avec succès.")
 
     def supprimer_professeur(self):
+        print("\n    ")
         id_teacher = input("entrez votre id_teacher : ")
         self.modele_prof.supprimer(id_teacher)
-
+        print("Utilisateur modifié avec succès.")
+        
     def modifier_professeur(self):
+        print("\n    ")
         id_teacher = input("entrez votre id_teacher : ")
         matiere = input("entrez votre matiere : ")
         self.modele_prof.modifier(matiere, id_teacher)
+        print("Utilisateur modifié avec succès.")
 
     def rechercher_professeur(self):
+        print("\n    ")
         id_teacher = input("entrez votre id_teacher : ")
         self.modele_prof.rechercher(id_teacher)
+        print("Utilisateur modifié avec succès.")
 
     # ==========================================
     # GESTION DES ÉTUDIANTS
     # ==========================================
     def ajouter_etudiant(self):
+        print("\n    ")
         nom = input("entrez votre nom : ")
         prenom = input("entrez votre prenom : ")
         age = input("entrez votre age : ")
         classe = input("entrez votre classe : ")
         matricule = input("entrez votre matricule : ")
         self.modele_etudiant.Ajouter(nom, prenom, age, classe, matricule)
+        print("Utilisateur modifié avec succès.")
 
     def supprimer_etudiant(self):
+        print("\n    ")
         id_students = input("entrez votre id_students : ")
         self.modele_etudiant.supprimer_etudiant(id_students)
+        print("Utilisateur modifié avec succès.")
     
     def rechercher_etudiant(self):
+        print("\n    ")
         id_students = input("entrez votre id_students : ")
         self.modele_etudiant.Rechercher_etudiant(id_students)
+        print("Utilisateur modifié avec succès.")
