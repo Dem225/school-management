@@ -35,8 +35,8 @@ class GestionAdmin:
         
     def rechercher_utilisateur(self):
         id_user = input("entrez votre id_user : ")
-        self.modele_user.rechercher_utilisateur(id_user)
-
+        resultat=self.modele_user.rechercher_utilisateur(id_user)
+        print("\nRésultat de la recherche :", resultat)
     # ==========================================
     # GESTION DES PROFESSEURS
     # ==========================================
@@ -57,14 +57,18 @@ class GestionAdmin:
         print("\n    ")
         id_teacher = input("entrez votre id_teacher : ")
         matiere = input("entrez votre matiere : ")
-        self.modele_prof.modifier(matiere, id_teacher)
+        self.modele_prof.Modifier(matiere, id_teacher)
         print("Utilisateur modifié avec succès.")
-
+            
     def rechercher_professeur(self):
         print("\n    ")
         id_teacher = input("entrez votre id_teacher : ")
-        self.modele_prof.rechercher(id_teacher)
-        print("Utilisateur modifié avec succès.")
+        
+        resultat = self.modele_prof.Rechercher(id_teacher)
+    
+        print("\nRésultat de la recherche :", resultat)
+        
+        return resultat
 
     # ==========================================
     # GESTION DES ÉTUDIANTS

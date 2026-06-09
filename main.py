@@ -32,8 +32,9 @@ def gerer_choix_admin():
                 gestion.modifier_professeur()
             elif Choix_Menu_PROFESSEURS=='4':
                 gestion.rechercher_professeur()
-            
-        elif choix == '3':
+        elif choix=='3':
+          print("hhh")
+        elif choix == '4':
             print("Déconnexion réussie. Au revoir !")
             break
         else:

@@ -4,7 +4,8 @@ MENU_PRINCIPALE_ADMINE = """
     \n Bienvenue dans le système de gestion de utilisateurs  principale (ADMIS) !
     1. Gérer les utilisateurs
     2. Gérer les Professeurs
-    3. DECONNEXION
+    3. Gérer les étudiants
+    4. DECONNEXION
 """
 
 MENU_PROFESSEUR = """

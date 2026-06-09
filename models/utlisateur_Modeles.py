@@ -46,6 +46,6 @@ class Utilisateur(ManagerBase):
         self.cusor.execute("DELETE FROM users")
         self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='users'")
         self.connecte.commit()
-
+    
     def close(self):
         self.connecte.close()
