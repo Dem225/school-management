@@ -19,7 +19,7 @@ class studentsModel(ManagerBase):
         """)
         self.connecte.commit()
 
-    def Ajouter(self, nom, prenom, age, classe, matricule):
+    def ajouter(self, nom, prenom, age, classe, matricule):
         
         self.cusor.execute(
             """
@@ -36,12 +36,42 @@ class studentsModel(ManagerBase):
         self.cusor.execute("DELETE FROM students  WHERE id = ? ", (id_students,  ))
         self.connecte.commit()
 
-    def Rechercher_etudiant(self, id_students):
+    def rechercher_etudiant(self, id_students):
 
         self.cusor.execute("SELECT * FROM students WHERE id=? ", (id_students, ))
         return self.cusor.fetchall()
         
+    def Modifier_etudiant_Non(self,id_students,nom,):
+        
+        self.cusor.execute("UPDATE students SET nom=? WHERE id=?", (nom, id_students))
+        self.connecte.commit()
 
+        
+
+    def Modifier_etudiant_prenom(self,id_students,prenom,):
+        
+        self.cusor.execute("UPDATE students SET prenom=? WHERE id=?", (id_students,prenom))
+        self.connecte.commit()
+
+        
+    def Modifier_etudiant_age(self,id_students,age):
+        
+        self.cusor.execute("UPDATE students SET age=? WHERE id=?",(id_students,age))
+        self.connecte.commit()
+
+
+
+        
+    def Modifier_etudiant_classe(self,id_students,classe):
+        self.cusor.execute("UPDATE students SET classe=? WHERE id=?", (id_students,classe))
+        self.connecte.commit()
+
+
+        
+    def Modifier_etudiant_matricule(self,id_students,matricule):
+    
+        self.cusor.execute("UPDATE students SET matricule=? WHERE id=?" ,(id_students,matricule))
+        self.connecte.commit()
         
     def Lister_etudiant(self):
         self.cusor.execute("SELECT * FROM students")

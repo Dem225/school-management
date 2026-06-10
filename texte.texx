@@ -56,3 +56,17 @@ def main():
        
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
+
+
+
+def modifier_nom_etudiant(self, id_students, nom):
+    query = "UPDATE students SET nom=? WHERE id=?"
+    # On passe 'nom' d'abord, puis 'id_students'
+    self.cursor.execute(query, (nom, id_students))
+    self.connexion.commit() # N'oubliez pas de commit pour enregistrer les modifications

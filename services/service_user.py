@@ -37,7 +37,9 @@ class GestionAdmin:
         id_user = input("entrez votre id_user : ")
         resultat=self.modele_user.rechercher_utilisateur(id_user)
         print("\nRésultat de la recherche :", resultat)
+        
         return resultat
+    
     def listes_touts_utilisateurs(self):
         print("\n ")
         resultats=self.modele_user.listes_tout_utilisateur()
@@ -90,7 +92,7 @@ class GestionAdmin:
         age = input("entrez votre age : ")
         classe = input("entrez votre classe : ")
         matricule = genere_matricule()
-        self.modele_etudiant.Ajouter(nom, prenom, age, classe, matricule)
+        self.modele_etudiant.ajouter(nom, prenom, age, classe, matricule)
         print("Utilisateur modifié avec succès.")
 
     def supprimer_etudiant(self):
@@ -102,7 +104,7 @@ class GestionAdmin:
     def rechercher_etudiants(self):
         print("\n    ")
         id_students = input("entrez votre id_students : ")
-        resultat=self.modele_etudiant.Rechercher_etudiant(id_students)
+        resultat=self.modele_etudiant.rechercher_etudiant(id_students)
         print("Utilisateur modifié avec succès.",resultat)
         return resultat
     
@@ -111,3 +113,41 @@ class GestionAdmin:
         resultats=self.modele_etudiant.Lister_etudiant()
         for i in resultats:
             print(i)
+    
+    def modifier_non(self):
+        print("\n   ")
+        id_students=input("entrez id_students : ")
+        non=input("entrez le nouveux Nom : ")
+        self.modele_etudiant.Modifier_etudiant_Non(non,id_students)
+        print(f" \n le nom a été modifier pour : {non}")
+    
+
+    def modifier_prenom(self):
+        print("\n   ")
+        id_students=input("entrez id_students : ")
+        prenom=input("entrez le nouveux prenom : ")
+        self.modele_etudiant.Modifier_etudiant_prenom(prenom,id_students)
+        print(f"\n le nom a été modifier pour : {prenom}")
+
+    def modifier_age(self):
+        print("\n   ")
+        id_students=input("entrez id_students : ")
+        age=input("entrez le nouveux age : ")
+       
+        self.modele_etudiant.Modifier_etudiant_age(age,id_students)
+        print(f" \n le nom a été modifier pour : {age}")
+    
+
+    def modifier_classe(self):
+        print("\n   ")
+        id_students=input("entrez id_students : ")
+        classe=input("entrez le nouveux classe : ")
+        self.modele_etudiant.Modifier_etudiant_classe(classe,id_students)
+        print(f" \n le nom a été modifier pour : {classe}")
+        
+    def modifier_matricule(self):
+        print("\n   ")
+        id_students=input("entrez id_students : ")
+        matricule=input("entrez le nouveux matricule : ")
+        self.modele_etudiant.Modifier_etudiant_Non(matricule,id_students)
+        print(f" \n le nom a été modifier pour : {matricule}")

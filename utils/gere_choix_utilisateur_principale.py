@@ -1,6 +1,6 @@
 
 from confige.Menu import  MENU_PRINCIPALE_ADMINE
-from confige.Menu_choix_admin import MENU_GESTION_DES_UTILISATEURS,MENU_GESTION_DES_PROFESSEURS,MENU_GESTION_DES_ETUDIANTS
+from confige.Menu_choix_admin import MENU_GESTION_DES_UTILISATEURS,MENU_GESTION_DES_PROFESSEURS,MENU_GESTION_DES_ETUDIANTS,MENU_MODIFICATION_DES_ETUDIANTS
 from services.service_user import GestionAdmin
 
 def gerer_choix_admin():
@@ -46,6 +46,19 @@ def gerer_choix_admin():
                 gestion.rechercher_etudiants()
             elif Choix_menu_ETUDIANTS=='4':
                 gestion.listes_touts_etudiants()
+            elif Choix_menu_ETUDIANTS=='5':
+                print(MENU_MODIFICATION_DES_ETUDIANTS)
+                choix_modificatio_etudiants=input("entrez votre choix : ")
+                if choix_modificatio_etudiants=='1':
+                    gestion.modifier_non()
+                elif choix_modificatio_etudiants=='2':
+                    gestion.modifier_prenom()
+                elif choix_modificatio_etudiants=='3':
+                    gestion.modifier_age()
+                elif choix_modificatio_etudiants=='4':
+                    gestion.modifier_classe()
+                elif choix_modificatio_etudiants=='5':
+                    gestion.modifier_matricule()
         elif choix == '4':
             print("Déconnexion réussie. Au revoir !")
             break
