@@ -3,7 +3,7 @@ MENU_GESTION_DES_UTILISATEURS="""
     1. ajouter_utilisateur
     2. supprimer_utilisateur
     3. modifier_utilisateur
-    
+    4.listes_touts_etudiant
     
 """
 
@@ -14,7 +14,7 @@ MENU_GESTION_DES_PROFESSEURS="""
     2. supprimer_utilisateur
     3. modifier_professeur
     4. rechercher_professeur
-    
+    5.listes_touts_etudiant
 """
 
 
@@ -24,5 +24,5 @@ MENU_GESTION_DES_ETUDIANTS="""
     1. ajouter_etudiant
     2. supprimer_etudiant
     3. rechercher_etudiant
-    
+    4.listes_touts_etudiant
 """

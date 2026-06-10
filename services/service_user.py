@@ -1,7 +1,7 @@
 from models.utlisateur_Modeles import Utilisateur
 from models.teachers_Modeles import ProfesseurModel
 from models.students_Modeles import studentsModel
-
+from utils.util_Matricule import genere_matricule
 class GestionAdmin:
     def __init__(self):
         self.modele_user = Utilisateur()
@@ -37,6 +37,13 @@ class GestionAdmin:
         id_user = input("entrez votre id_user : ")
         resultat=self.modele_user.rechercher_utilisateur(id_user)
         print("\nRésultat de la recherche :", resultat)
+        return resultat
+    def listes_touts_utilisateurs(self):
+        print("\n ")
+        resultats=self.modele_user.listes_tout_utilisateur()
+        for i in resultats:
+            print(i)
+    
     # ==========================================
     # GESTION DES PROFESSEURS
     # ==========================================
@@ -63,12 +70,15 @@ class GestionAdmin:
     def rechercher_professeur(self):
         print("\n    ")
         id_teacher = input("entrez votre id_teacher : ")
-        
         resultat = self.modele_prof.Rechercher(id_teacher)
-    
         print("\nRésultat de la recherche :", resultat)
-        
         return resultat
+
+    def listes_touts_prof(self):
+        print("\n ")
+        resultats=self.modele_prof.Liste_tout_professeur()
+        for i in resultats:
+            print(i)
 
     # ==========================================
     # GESTION DES ÉTUDIANTS
@@ -79,7 +89,7 @@ class GestionAdmin:
         prenom = input("entrez votre prenom : ")
         age = input("entrez votre age : ")
         classe = input("entrez votre classe : ")
-        matricule = input("entrez votre matricule : ")
+        matricule = genere_matricule()
         self.modele_etudiant.Ajouter(nom, prenom, age, classe, matricule)
         print("Utilisateur modifié avec succès.")
 
@@ -89,8 +99,15 @@ class GestionAdmin:
         self.modele_etudiant.supprimer_etudiant(id_students)
         print("Utilisateur modifié avec succès.")
     
-    def rechercher_etudiant(self):
+    def rechercher_etudiants(self):
         print("\n    ")
         id_students = input("entrez votre id_students : ")
-        self.modele_etudiant.Rechercher_etudiant(id_students)
-        print("Utilisateur modifié avec succès.")
+        resultat=self.modele_etudiant.Rechercher_etudiant(id_students)
+        print("Utilisateur modifié avec succès.",resultat)
+        return resultat
+    
+    def listes_touts_etudiants(self):
+        print("\n ")
+        resultats=self.modele_etudiant.Lister_etudiant()
+        for i in resultats:
+            print(i)

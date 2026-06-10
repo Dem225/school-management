@@ -46,6 +46,14 @@ class Utilisateur(ManagerBase):
         self.cusor.execute("DELETE FROM users")
         self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='users'")
         self.connecte.commit()
+        
+    def rechercher_utilisateur(self,id_user):
+        self.cusor.execute("SELECT * FROM users  WHERE id= ?",(id_user))
+        return self.cusor.fetchall()
+    
+    def listes_tout_utilisateur(self):
+        self.cusor.execute("SELEC * FROM users ")
+        return self.cusor.fetchall()
     
     def close(self):
         self.connecte.close()

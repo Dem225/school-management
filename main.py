@@ -1,50 +1,9 @@
 from services.services_auth import CONNEXION_User
-from confige.Menu import MENU_PRINCIPALE, MENU_PROFESSEUR, MENU_ETUDIANT,MENU_CONNECTION,MENU_PRINCIPALE_ADMINE
-from confige.Menu_choix_admin import MENU_GESTION_DES_UTILISATEURS,MENU_GESTION_DES_PROFESSEURS,MENU_GESTION_DES_ETUDIANTS
-
-from services.service_user import GestionAdmin
-
-def gerer_choix_admin():
-   
-    gestion = GestionAdmin()
-    
-    while True:
-        print(MENU_PRINCIPALE_ADMINE)
-        choix = input("Entrez votre choix : ")
-        
-        if choix == '1':
-            print(MENU_GESTION_DES_UTILISATEURS)
-            Choix_Menu_UTILISATEURS=input("Entrez votre choix :")
-            if Choix_Menu_UTILISATEURS=='1':
-                gestion.ajouter_utilisateur()
-            elif Choix_Menu_UTILISATEURS=='2':
-                gestion.supprimer_utilisateur()
-            elif Choix_Menu_UTILISATEURS=='3':
-                gestion.modifier_utilisateur()
-        elif choix == '2':
-            print(MENU_GESTION_DES_PROFESSEURS)
-            Choix_Menu_PROFESSEURS=input("Entrez votre choix :")
-            if Choix_Menu_PROFESSEURS=='1':
-                gestion.ajouter_professeur()
-            elif Choix_Menu_PROFESSEURS=='2':
-                gestion.supprimer_professeur()
-            elif Choix_Menu_PROFESSEURS=='3':
-                gestion.modifier_professeur()
-            elif Choix_Menu_PROFESSEURS=='4':
-                gestion.rechercher_professeur()
-        elif choix=='3':
-          print("hhh")
-        elif choix == '4':
-            print("Déconnexion réussie. Au revoir !")
-            break
-        else:
-            print("Choix invalide. Veuillez réessayer.")
+from confige.Menu import  MENU_PROFESSEUR, MENU_ETUDIANT
+from utils.gere_choix_utilisateur_principale import gerer_choix_admin
 
 def main():
-   
     role = CONNEXION_User()
-
-   
     if role == 'admin':
         gerer_choix_admin()
         

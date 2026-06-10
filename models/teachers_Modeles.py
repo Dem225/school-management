@@ -40,6 +40,9 @@ class ProfesseurModel(ManagerBase):
       self.cusor.execute("SELECT * FROM teachers  WHERE id= ?",(id_teacher ,))
       return self.cusor.fetchall()
 
-      
+    def Liste_tout_professeur(self):
+        self.cusor.execute("SELEC * FROM teachers ")
+        return self.cusor.fetchall()
+    
     def close(self):
         self.connecte.close()
