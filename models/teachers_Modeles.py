@@ -44,5 +44,14 @@ class ProfesseurModel(ManagerBase):
         self.cusor.execute("SELEC * FROM teachers ")
         return self.cusor.fetchall()
     
+
+
+    
+    def Renommer_columns(self):
+        self.cusor.execute("ALTER TABLE teachers RENAME COLUMN matiere TO ;")
+
+
+
+    
     def close(self):
         self.connecte.close()

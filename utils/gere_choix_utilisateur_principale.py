@@ -60,7 +60,7 @@ def gerer_choix_admin():
                 elif choix_modificatio_etudiants=='5':
                     gestion.modifier_matricule()
         elif choix == '4':
-            print("Déconnexion réussie. Au revoir !")
+            print("Déconnexion réussie. Au revoir ! ")
             break
         else:
             print("Choix invalide. Veuillez réessayer.")

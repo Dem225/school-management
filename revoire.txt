@@ -1,0 +1,112 @@
+-- Création de la table des Notes (grades)
+CREATE TABLE grades (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    student_id INTEGER NOT NULL,
+    subject_id INTEGER NOT NULL,
+    note REAL NOT NULL, -- REAL permet de gérer les demi-points (ex: 15.5)
+    FOREIGN KEY (student_id) REFERENCES students(id),
+    FOREIGN KEY (subject_id) REFERENCES subjects(id)
+);
+
+-- Création de la table des Absences
+CREATE TABLE absences (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    student_id INTEGER NOT NULL,
+    date TEXT NOT NULL, -- SQLite stocke généralement les dates sous forme de TEXT (YYYY-MM-DD)
+    status TEXT NOT NULL,
+    FOREIGN KEY (student_id) REFERENCES students(id)
+);
+
+
+-- Stage 1 : Création de la table des professeurs (nécessaire pour la liaison)
+CREATE TABLE IF NOT EXISTS teachers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nom TEXT NOT NULL,
+    matiere TEXT NOT NULL
+);
+
+-- Étape 2 : Création de la table 'subjects' (Matières)
+CREATE TABLE IF NOT EXISTS subjects (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,   -- Identifiant unique de la matière [cite: 100]
+    nom TEXT NOT NULL,                      -- Nom de la matière (ex: Mathématiques) [cite: 101]
+    teacher_id INTEGER,                     -- ID du professeur responsable 
+    
+    -- Liaison de clé étrangère avec la table teachers 
+    FOREIGN KEY (teacher_id) REFERENCES teachers(id) 
+        ON DELETE SET NULL                  -- Si le prof est supprimé, la matière reste mais l'id devient NULL
+);
+
+
+
+
+Fonction
+
+
+
+# models/absences_Modeles.py
+
+class Absence:
+    def __init__(self, student_id, date, status="Non justifiée", id=None):
+        """
+        Représente l'absence d'un étudiant à une date donnée.
+        """
+        self.id = id                  # Géré automatiquement par SQLite [cite: 109]
+        self.student_id = student_id  # ID de l'étudiant absent [cite: 110]
+        self.date = date              # Date de l'absence (ex: '2026-06-01') [cite: 111, 118]
+        
+        # Validation du statut de l'absence 
+        statuts_autorises = ["Justifiée", "Non justifiée"]
+        if status in statuts_autorises:
+            self.status = status [cite: 112]
+        else:
+            raise ValueError("Erreur : Le statut doit être 'Justifiée' ou 'Non justifiée'.") [cite: 73]
+
+    def __str__(self):
+        return f"Absence le {self.date} - Étudiant ID: {self.student_id} ({self.status})"
+
+
+
+
+
+
+
+# models/notes_Modeles.py
+
+class Grade:
+    def __init__(self, student_id, subject_id, note, id=None):
+        """
+        Représente une note attribuée à un étudiant dans une matière spécifique.
+        """
+        self.id = id                  # Géré automatiquement par SQLite [cite: 104]
+        self.student_id = student_id  # ID de l'étudiant concerné [cite: 105]
+        self.subject_id = subject_id  # ID de la matière concernée [cite: 106]
+        
+        # Validation obligatoire : la note doit être entre 0 et 20 
+        if 0 <= note <= 20:
+            self.note = note [cite: 107]
+        else:
+            raise ValueError("Erreur : La note doit être comprise entre 0 et 20.") [cite: 66]
+
+    def __str__(self):
+        return f"Notes: {self.note}/20 (Étudiant ID: {self.student_id}, Matière ID: {self.subject_id})"
+
+
+
+
+
+
+
+# models/sujets_Modeles.py
+
+class Subject:
+    def __init__(self, nom, teacher_id=None, id=None):
+        """
+        Représente une matière dans le système scolaire.
+        """
+        self.id = id              # Sera fourni par SQLite (AUTOINCREMENT)
+        self.nom = nom            # Nom de la matière (ex: Mathématiques) [cite: 101]
+        self.teacher_id = teacher_id  # ID du professeur responsable [cite: 102]
+
+    def __str__(self):
+        return f"Matière: {self.nom} (Professeur ID: {self.teacher_id})"
+

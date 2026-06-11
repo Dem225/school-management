@@ -30,13 +30,14 @@ class GestionAdmin:
         id_user = input("entrez votre id_user : ")
         name = input("entrez votre name : ")
         role = input("entrez votre role : ")
-        self.modele_user.modifier_utilisateur(id_user, name, role)
+        password=input("entrez votre mot de passe  :")
+        self.modele_user.modifier_utilisateur(id_user, name, role,password)
         print("Utilisateur modifié avec succès.")
         
     def rechercher_utilisateur(self):
         id_user = input("entrez votre id_user : ")
         resultat=self.modele_user.rechercher_utilisateur(id_user)
-        print("\nRésultat de la recherche :", resultat)
+        print("\ nRecherch Result:", resultat)
         
         return resultat
     

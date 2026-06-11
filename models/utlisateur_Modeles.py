@@ -27,12 +27,12 @@ class Utilisateur(ManagerBase):
         self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='users'")
         self.connecte.commit()
     
-    def modifier_utilisateur(self, id_user, name, role):
+    def modifier_utilisateur(self, id_user, name, role , password):
         self.cusor.execute("""
             UPDATE users 
-            SET name = ?, role = ?  
+            SET name = ?, role = ?  , password= ?
             WHERE id = ?
-        """, (name, role, id_user))
+        """, (name, role,password, id_user))
         self.connecte.commit()
 
     def verifier_identifiants(self, nom, password):

@@ -1,18 +1,12 @@
-from services.services_auth import CONNEXION_User
-from confige.Menu import  MENU_PROFESSEUR, MENU_ETUDIANT
-from utils.gere_choix_utilisateur_principale import gerer_choix_admin
+from models.notes_Modeles import Notes_model
+
 
 def main():
-    role = CONNEXION_User()
-    if role == 'admin':
-        gerer_choix_admin()
-        
-    elif role == 'professeur':
-        print(MENU_PROFESSEUR)
-       
-      
-    elif role == 'étudiant':
-        print(MENU_ETUDIANT)
-       
+
+    recepteur = Notes_model()
+    recepteur.creer_table_Notes()
+    
+    print("Fait avec succès !")
+   
 if __name__ == "__main__":
     main()

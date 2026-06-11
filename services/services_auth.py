@@ -8,6 +8,7 @@ def CONNEXION_User():
     print(MENU_PRINCIPALE)
     Choix_connect=input("entrez votre choix : ")
     if Choix_connect=='1':
+        
         print(MENU_CONNECTION)
         name = input("Entrez votre nom d'utilisateur : ")
         password = input("Entrez votre mot de passe : ")
@@ -27,5 +28,5 @@ def CONNEXION_User():
             sys.exit()
 
     elif Choix_connect=='2':
-        print("Merci a bientot !! ")
+        print("Merci a bientot !! (chien la tu es quitter pourquoi tu n'as pas dit tu es bete ) ")
         return
