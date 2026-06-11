@@ -1,6 +1,6 @@
 
 from confige.Menu import  MENU_PRINCIPALE_ADMINE
-from confige.Menu_choix_admin import MENU_GESTION_DES_UTILISATEURS,MENU_GESTION_DES_PROFESSEURS,MENU_GESTION_DES_ETUDIANTS,MENU_MODIFICATION_DES_ETUDIANTS
+from confige.Menu_choix_admin import MENU_GESTION_DES_UTILISATEURS,MENU_GESTION_DES_PROFESSEURS,MENU_GESTION_DES_ETUDIANTS,MENU_MODIFICATION_DES_ETUDIANTS,MENU_GESTION_MODIFICATION_DES_UTILISATEURS
 from services.service_user import GestionAdmin
 
 def gerer_choix_admin():
@@ -19,7 +19,14 @@ def gerer_choix_admin():
             elif Choix_Menu_UTILISATEURS=='2':
                 gestion.supprimer_utilisateur()
             elif Choix_Menu_UTILISATEURS=='3':
-                gestion.modifier_utilisateur()
+                print(MENU_GESTION_MODIFICATION_DES_UTILISATEURS)
+                choix_modification_utilisateur=input("entrez votre choix :")
+                if choix_modification_utilisateur=='1':
+                    gestion.modifiers_utilisateur_nom()
+                elif choix_modification_utilisateur=='2':
+                    gestion.modifiers_utilisateur_role()
+                elif choix_modification_utilisateur=='3':
+                    gestion.modifiers_utilisateur_password()
             elif Choix_Menu_UTILISATEURS=='4':
                 gestion.listes_touts_utilisateurs()
         elif choix == '2':

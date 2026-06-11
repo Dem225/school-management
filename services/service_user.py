@@ -25,15 +25,6 @@ class GestionAdmin:
         self.modele_user.supprimer_utilisateur(id_user)
         print("Utilisateur supprimé avec succès.")
 
-    def modifier_utilisateur(self):
-        print("\n    ")
-        id_user = input("entrez votre id_user : ")
-        name = input("entrez votre name : ")
-        role = input("entrez votre role : ")
-        password=input("entrez votre mot de passe  :")
-        self.modele_user.modifier_utilisateur(id_user, name, role,password)
-        print("Utilisateur modifié avec succès.")
-        
     def rechercher_utilisateur(self):
         id_user = input("entrez votre id_user : ")
         resultat=self.modele_user.rechercher_utilisateur(id_user)
@@ -41,11 +32,34 @@ class GestionAdmin:
         
         return resultat
     
-    def listes_touts_utilisateurs(self):
+    def listes_touts_utilisateu(self):
         print("\n ")
         resultats=self.modele_user.listes_tout_utilisateur()
         for i in resultats:
             print(i)
+    
+    def modifiers_utilisateur_nom(self):
+        print("\n   ")
+        id_students=input("entrez id_students : ")
+        nom=input("entrez le nouveux nom : ")
+        self.modele_user.modifier_utilisateur_nom(nom,id_students)
+        print(f" \n le nom a été modifier pour : {nom}")
+    
+
+    def modifiers_utilisateur_role(self):
+        print("\n   ")
+        id_students=input("entrez id_students : ")
+        role=input("entrez le nouveux role : ")
+        self.modele_user.modifier_utilisateur_role(role,id_students)
+        print(f" \n le nom a été modifier pour : {role}")
+        
+    def modifiers_utilisateur_password(self):
+        print("\n   ")
+        id_students=input("entrez id_students : ")
+        password=input("entrez le nouveux password : ")
+        self.modele_user.modifier_utilisateur_password(password,id_students)
+        print(f" \n le nom a été modifier pour : {password}")
+        
     
     # ==========================================
     # GESTION DES PROFESSEURS

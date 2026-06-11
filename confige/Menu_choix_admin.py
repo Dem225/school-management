@@ -37,3 +37,9 @@ MENU_MODIFICATION_DES_ETUDIANTS="""
     5. matricule
 
 """
+MENU_GESTION_MODIFICATION_DES_UTILISATEURS="""
+    \n Bienvenue dans le système des gestion  des modification_des_utilisateur !
+    1. Nom
+    2. role
+    3. password
+"""
