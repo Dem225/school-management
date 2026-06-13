@@ -27,8 +27,8 @@ def gerer_choix_admin():
                     gestion.modifiers_utilisateur_role()
                 elif choix_modification_utilisateur=='3':
                     gestion.modifiers_utilisateur_password()
-            elif Choix_Menu_UTILISATEURS=='4':
-                gestion.listes_touts_utilisateurs()
+                elif Choix_Menu_UTILISATEURS=='4':
+                    gestion.listes_touts_utilisateurs()
         elif choix == '2':
             print(MENU_GESTION_DES_PROFESSEURS)
             Choix_Menu_PROFESSEURS=input("Entrez votre choix :")

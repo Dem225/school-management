@@ -73,8 +73,8 @@ class Utilisateur(ManagerBase):
         return self.cusor.fetchall()
     
     def listes_tout_utilisateur(self):
-        self.cusor.execute("SELEC * FROM users ")
+        self.cusor.execute("SELECT * FROM users ")
         return self.cusor.fetchall()
-    
+       
     def close(self):
         self.connecte.close()

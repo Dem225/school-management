@@ -32,7 +32,7 @@ class GestionAdmin:
         
         return resultat
     
-    def listes_touts_utilisateu(self):
+    def listes_touts_utilisateurs(self):
         print("\n ")
         resultats=self.modele_user.listes_tout_utilisateur()
         for i in resultats:
