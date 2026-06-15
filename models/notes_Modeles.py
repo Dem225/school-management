@@ -10,7 +10,7 @@ class Notes_model(ManagerBase):
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 student_id INTEGER NOT NULL,
                 subject_id INTEGER NOT NULL,
-                note REAL NOT NULL,
+                note REAL NOT NULL CHECK(note >= 0 AND note <= 20),
                 FOREIGN KEY (student_id) REFERENCES students(id),
                 FOREIGN KEY (subject_id) REFERENCES subjects(id)
             );
@@ -26,7 +26,55 @@ class Notes_model(ManagerBase):
             INSERT INTO grades (student_id, subject_id, note) 
             VALUES (?, ?, ?);
         """, (student_id, subject_id, note))
-
         self.connecte.commit()
         print(f"Note de {note}/20 ajoutée avec succès pour l'étudiant ID {student_id} !")
         return True
+
+    def supprimer_note(self, id_note):
+        self.cusor.execute("DELETE FROM grades WHERE id = ?", (id_note,))
+        self.connecte.commit()
+        print(" Note supprimée avec succès !")
+
+    def modifier_note_valeur(self, id_note, nouvelle_note):
+        if not (0 <= nouvelle_note <= 20):
+            print("Erreur : La note doit être comprise entre 0 et 20.")
+            return False 
+
+        self.cusor.execute("""
+            UPDATE grades 
+            SET note = ?
+            WHERE id = ?
+        """, (nouvelle_note, id_note))
+        self.connecte.commit()
+        print(" Note mise à jour avec succès !")
+        return True
+
+    def calculer_moyenne_etudiant(self, student_id):
+        self.cusor.execute("""
+            SELECT AVG(note) FROM grades WHERE student_id = ?
+        """, (student_id,))
+        resultat = self.cusor.fetchone()
+        return resultat[0] if resultat[0] is not None else 0.0
+
+    def supprimer_toutes_les_notes(self):
+        self.cusor.execute("DELETE FROM grades")
+        self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='grades'")
+        self.connecte.commit()
+        print(" Toutes les notes ont été supprimées.")
+
+    def rechercher_note(self, id_note):
+        self.cusor.execute("SELECT * FROM grades WHERE id = ?", (id_note,))
+        return self.cusor.fetchone()
+
+    def liste_tout_note(self):
+        self.cusor.execute("SELECT * FROM grades")
+        return self.cusor.fetchall()
+
+    def supprimer_table_notes_definitivement(self):
+        self.cusor.execute("DROP TABLE IF EXISTS grades")
+        self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='grades'")
+        self.connecte.commit()
+        print(" La table 'grades' a été définitivement supprimée !")
+
+    def close(self):
+        self.connecte.close()

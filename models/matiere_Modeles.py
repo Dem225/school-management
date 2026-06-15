@@ -15,21 +15,74 @@ class Sujet_matiere(ManagerBase):
             );
         """)
         self.connecte.commit()
-
-   
+        
     def ajouter_matiere(self, nom, teacher_id=None):
-      
         if not nom or nom.strip() == "":
             print(" Erreur : Le nom de la matière ne peut pas être vide.")
             return False
             
-       
         self.cusor.execute("""
             INSERT INTO subjects (nom, teacher_id) 
             VALUES (?, ?);
         """, (nom, teacher_id))
-        
-        
         self.connecte.commit()
         print(f" Matière '{nom}' ajoutée avec succès !")
         return True
+        
+    def supprimer_matiere(self, id_matiere):
+        self.cusor.execute("DELETE FROM subjects WHERE id = ?", (id_matiere,))
+        self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='subjects'")
+        self.connecte.commit()
+        print(" Matière supprimée avec succès !")
+    
+    def modifier_matiere_nom(self, id_matiere, nom):
+        self.cusor.execute("""
+            UPDATE subjects 
+            SET nom = ?
+            WHERE id = ?
+        """, (nom, id_matiere))
+        self.connecte.commit()
+        print(" Nom de la matière mis à jour !")
+
+    def affecter_professeur(self, id_matiere, teacher_id):
+        self.cusor.execute("""
+            UPDATE subjects 
+            SET teacher_id = ?  
+            WHERE id = ?
+        """, (teacher_id, id_matiere))
+        self.connecte.commit()
+        print(" Professeur affecté à la matière avec succès !")
+
+    def supprimer_tous_les_matieres(self):
+        self.cusor.execute("DELETE FROM subjects")
+        self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='subjects'")
+        self.connecte.commit()
+        print(" Toutes les matières ont été supprimées.")
+        
+    def rechercher_matiere(self, id_matiere):
+        self.cusor.execute("SELECT * FROM subjects WHERE id = ?", (id_matiere,))
+        return self.cusor.fetchone()
+    
+    def liste_tout_matiere(self):
+        self.cusor.execute("SELECT * FROM subjects")
+        return self.cusor.fetchall()
+    
+
+    def supprimer_table_matiere_definitively(self):
+        """Supprime définitivement la table subjects de la base de données"""
+        try:
+            
+            self.cusor.execute("DROP TABLE IF EXISTS subjects")
+            
+           
+            self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='subjects'")
+            self.connecte.commit()
+
+            print(" La table 'subjects' a été définitivement supprimée de la base de données !")
+            return True
+        except Exception as e:
+            print(f" Erreur : Impossible de supprimer la table des matières ({e}).")
+            return False
+            
+    def close(self):
+        self.connecte.close()

@@ -1,6 +1,6 @@
 from database.DB import ManagerBase
 
-class Absences_model(ManagerBase):
+class Absence_model(ManagerBase):
     def __init__(self):
         super().__init__()
         
@@ -10,26 +10,57 @@ class Absences_model(ManagerBase):
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 student_id INTEGER NOT NULL,
                 date TEXT NOT NULL,
-                status TEXT NOT NULL,
+                justifie INTEGER DEFAULT 0, -- 0 = Non justifié, 1 = Justifié
                 FOREIGN KEY (student_id) REFERENCES students(id)
             );
         """)
         self.connecte.commit()
 
-    
-    def ajouter_absence(self, student_id, date, status="Non justifiée"):
-       
-        statuts_autorises = ["Justifiée", "Non justifiée"]
-        if status not in statuts_autorises:
-            print(" Erreur : Le statut doit être 'Justifiée' ou 'Non justifiée'.")
-            return False 
-            
-       
+    def ajouter_absence(self, student_id, date, justifie=0):
         self.cusor.execute("""
-            INSERT INTO absences (student_id, date, status) 
+            INSERT INTO absences (student_id, date, justifie) 
             VALUES (?, ?, ?);
-        """, (student_id, date, status))
-        
+        """, (student_id, date, justifie))
         self.connecte.commit()
-        print(f" Absence enregistrée le {date} pour l'étudiant ID {student_id} ({status}) !")
+        print(f" Absence enregistrée pour l'étudiant ID {student_id} à la date du {date} !")
         return True
+
+    def supprimer_absence(self, id_absence):
+        self.cusor.execute("DELETE FROM absences WHERE id = ?", (id_absence,))
+        self.connecte.commit()
+        print(" Absence supprimée avec succès !")
+
+    def justifier_absence(self, id_absence):
+        self.cusor.execute("""
+            UPDATE absences 
+            SET justifie = 1
+            WHERE id = ?
+        """, (id_absence,))
+        self.connecte.commit()
+        print(" L'absence a été marquée comme justifiée !")
+
+    def nombre_absences_etudiant(self, student_id):
+        self.cusor.execute("""
+            SELECT COUNT(*) FROM absences WHERE student_id = ?
+        """, (student_id,))
+        resultat = self.cusor.fetchone()
+        return resultat[0] if resultat[0] is not None else 0
+
+    def supprimer_toutes_les_absences(self):
+        self.cusor.execute("DELETE FROM absences")
+        self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='absences'")
+        self.connecte.commit()
+        print(" Toutes les absences ont été supprimées.")
+
+    def liste_toutes_absences(self):
+        self.cusor.execute("SELECT * FROM absences")
+        return self.cusor.fetchall()
+
+    def supprimer_table_absences_definitivement(self):
+        self.cusor.execute("DROP TABLE IF EXISTS absences")
+        self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='absences'")
+        self.connecte.commit()
+        print(" La table 'absences' a été définitivement supprimée !")
+
+    def close(self):
+        self.connecte.close()
