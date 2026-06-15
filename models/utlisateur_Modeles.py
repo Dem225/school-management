@@ -72,7 +72,7 @@ class Utilisateur(ManagerBase):
         self.cusor.execute("SELECT * FROM users  WHERE id= ?",(id_user))
         return self.cusor.fetchall()
     
-    def listes_tout_utilisateur(self):
+    def liste_tout_utilisateur(self):
         self.cusor.execute("SELECT * FROM users ")
         return self.cusor.fetchall()
        

@@ -1,6 +1,6 @@
 MENU_GESTION_DES_UTILISATEURS="""
     \n Bienvenue dans le système de gestion de utilisateurs GESTION DES UTILISATEURS !
-    1. ajouter_utilisateur
+    1. ajouter_utlisateur
     2. supprimer_utilisateur
     3. modifier_utilisateur
     4. listes_touts_utilisateur

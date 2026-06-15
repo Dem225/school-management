@@ -14,5 +14,6 @@ def main():
     elif role == 'étudiant':
         print(MENU_ETUDIANT)
        
-if __name__ == "__main__":
+if __name__ == '__main__':
+    
     main()

@@ -41,7 +41,7 @@ class ProfesseurModel(ManagerBase):
       return self.cusor.fetchall()
 
     def Liste_tout_professeur(self):
-        self.cusor.execute("SELEC * FROM teachers ")
+        self.cusor.execute("SELECT * FROM teachers ")
         return self.cusor.fetchall()
     
 

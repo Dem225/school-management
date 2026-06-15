@@ -13,7 +13,8 @@ def gerer_choix_admin():
         
         if choix == '1':
             print(MENU_GESTION_DES_UTILISATEURS)
-            Choix_Menu_UTILISATEURS=input("Entrez votre choix :")
+            
+            Choix_Menu_UTILISATEURS=input("Entrez votre choix : ")
             if Choix_Menu_UTILISATEURS=='1':
                 gestion.ajouter_utilisateur()
             elif Choix_Menu_UTILISATEURS=='2':
@@ -27,8 +28,8 @@ def gerer_choix_admin():
                     gestion.modifiers_utilisateur_role()
                 elif choix_modification_utilisateur=='3':
                     gestion.modifiers_utilisateur_password()
-                elif Choix_Menu_UTILISATEURS=='4':
-                    gestion.listes_touts_utilisateurs()
+            elif Choix_Menu_UTILISATEURS=='4':
+                gestion.listes_touts_utilisateurs()
         elif choix == '2':
             print(MENU_GESTION_DES_PROFESSEURS)
             Choix_Menu_PROFESSEURS=input("Entrez votre choix :")

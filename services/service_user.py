@@ -34,8 +34,8 @@ class GestionAdmin:
     
     def listes_touts_utilisateurs(self):
         print("\n ")
-        resultats=self.modele_user.listes_tout_utilisateur()
-        for i in resultats:
+        resultat=self.modele_user.liste_tout_utilisateur()
+        for i in resultat:
             print(i)
     
     def modifiers_utilisateur_nom(self):
@@ -166,3 +166,6 @@ class GestionAdmin:
         matricule=input("entrez le nouveux matricule : ")
         self.modele_etudiant.Modifier_etudiant_Non(matricule,id_students)
         print(f" \n le nom a été modifier pour : {matricule}")
+
+
+
