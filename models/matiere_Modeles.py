@@ -69,20 +69,12 @@ class Sujet_matiere(ManagerBase):
     
 
     def supprimer_table_matiere_definitively(self):
-        """Supprime définitivement la table subjects de la base de données"""
-        try:
-            
-            self.cusor.execute("DROP TABLE IF EXISTS subjects")
-            
-           
-            self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='subjects'")
-            self.connecte.commit()
-
-            print(" La table 'subjects' a été définitivement supprimée de la base de données !")
-            return True
-        except Exception as e:
-            print(f" Erreur : Impossible de supprimer la table des matières ({e}).")
-            return False
+        self.cusor.execute("DROP TABLE IF EXISTS subjects")
+        self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='subjects'")
+        self.connecte.commit()
+        print(" La table 'subjects' a été définitivement supprimée de la base de données !")
+        return True
+       
             
     def close(self):
         self.connecte.close()

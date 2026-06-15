@@ -28,7 +28,7 @@ class Absence_model(ManagerBase):
     def supprimer_absence(self, id_absence):
         self.cusor.execute("DELETE FROM absences WHERE id = ?", (id_absence,))
         self.connecte.commit()
-        print(" Absence supprimée avec succès !")
+        
 
     def justifier_absence(self, id_absence):
         self.cusor.execute("""
@@ -40,11 +40,8 @@ class Absence_model(ManagerBase):
         print(" L'absence a été marquée comme justifiée !")
 
     def nombre_absences_etudiant(self, student_id):
-        self.cusor.execute("""
-            SELECT COUNT(*) FROM absences WHERE student_id = ?
-        """, (student_id,))
-        resultat = self.cusor.fetchone()
-        return resultat[0] if resultat[0] is not None else 0
+        self.cusor.execute("SELECT COUNT(*) FROM absences WHERE student_id = ?", (student_id,))
+        return self.cursor.fetchone()[0]
 
     def supprimer_toutes_les_absences(self):
         self.cusor.execute("DELETE FROM absences")

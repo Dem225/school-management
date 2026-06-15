@@ -27,13 +27,13 @@ class Notes_model(ManagerBase):
             VALUES (?, ?, ?);
         """, (student_id, subject_id, note))
         self.connecte.commit()
-        print(f"Note de {note}/20 ajoutée avec succès pour l'étudiant ID {student_id} !")
+       
         return True
 
     def supprimer_note(self, id_note):
         self.cusor.execute("DELETE FROM grades WHERE id = ?", (id_note,))
         self.connecte.commit()
-        print(" Note supprimée avec succès !")
+       
 
     def modifier_note_valeur(self, id_note, nouvelle_note):
         if not (0 <= nouvelle_note <= 20):
@@ -50,11 +50,8 @@ class Notes_model(ManagerBase):
         return True
 
     def calculer_moyenne_etudiant(self, student_id):
-        self.cusor.execute("""
-            SELECT AVG(note) FROM grades WHERE student_id = ?
-        """, (student_id,))
-        resultat = self.cusor.fetchone()
-        return resultat[0] if resultat[0] is not None else 0.0
+        self.cursor.execute("SELECT AVG(note) FROM grades WHERE student_id = ?", (student_id,))
+        return self.cursor.fetchone()[0] or 0.0
 
     def supprimer_toutes_les_notes(self):
         self.cusor.execute("DELETE FROM grades")
