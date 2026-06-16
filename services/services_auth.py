@@ -1,12 +1,12 @@
 import sys
 from models.utlisateur_Modeles import Utilisateur
 from confige.Menu import MENU_PRINCIPALE_ADMINE, MENU_PROFESSEUR, MENU_ETUDIANT, MENU_PRINCIPALE ,MENU_CONNECTION
-
+from confige.Menu import MENU_PRINCIPALE
 
 def CONNEXION_User():
     
     print(MENU_PRINCIPALE)
-    Choix_connect=input("entrez votre choix : ")
+    Choix_connect=input("📥 Entrez le numéro de votre option : ")
     if Choix_connect=='1':
         
         print(MENU_CONNECTION)

@@ -6,10 +6,6 @@ class GestionStudents:
         self.module_Absence=Absence_model ()
         self.module_Notes =Notes_model ()
 
-
-        
-
-
     def Liste_Moyenne_Etudiant(self):
         print("\n")
         student_id=input("entrez l'id de l'étudant :" )
