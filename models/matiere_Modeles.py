@@ -16,17 +16,17 @@ class Sujet_matiere(ManagerBase):
         """)
         self.connecte.commit()
         
-    def ajouter_matiere(self, nom, teacher_id=None):
-        if not nom or nom.strip() == "":
-            print(" Erreur : Le nom de la matière ne peut pas être vide.")
+    def ajouter_matiere(self, matiere, teacher_id=None):
+        if not matiere or matiere.strip() == "":
+            print(" Erreur : Le non de la matière ne peut pas être vide.")
             return False
             
         self.cusor.execute("""
             INSERT INTO subjects (nom, teacher_id) 
             VALUES (?, ?);
-        """, (nom, teacher_id))
+        """, (matiere, teacher_id))
         self.connecte.commit()
-        print(f" Matière '{nom}' ajoutée avec succès !")
+        print(f" Matière '{matiere}' ajoutée avec succès !")
         return True
         
     def supprimer_matiere(self, id_matiere):
@@ -35,12 +35,12 @@ class Sujet_matiere(ManagerBase):
         self.connecte.commit()
         print(" Matière supprimée avec succès !")
     
-    def modifier_matiere_nom(self, id_matiere, nom):
+    def modifier_matiere_nom(self, id_matiere, matiere):
         self.cusor.execute("""
             UPDATE subjects 
             SET nom = ?
             WHERE id = ?
-        """, (nom, id_matiere))
+        """, (matiere, id_matiere))
         self.connecte.commit()
         print(" Nom de la matière mis à jour !")
 
