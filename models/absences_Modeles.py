@@ -47,7 +47,7 @@ class Absence_model(ManagerBase):
         self.cusor.execute("DELETE FROM absences")
         self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='absences'")
         self.connecte.commit()
-        print(" Toutes les absences ont été supprimées.")
+       
 
     def liste_toutes_absences(self):
         self.cusor.execute("SELECT * FROM absences")

@@ -59,6 +59,10 @@ class Notes_model(ManagerBase):
         self.connecte.commit()
         print(" Toutes les notes ont été supprimées.")
 
+    def rechercher_moyenne(self,student_id):
+        self.cusor.execute("SELECT AVG(note) FROM grades WHERE student_id = ?",(student_id))
+        return self.cusor.fetchall()[0] or 0.0
+
     def rechercher_note(self, id_note):
         self.cusor.execute("SELECT * FROM grades WHERE id = ?", (id_note,))
         return self.cusor.fetchone()

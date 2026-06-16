@@ -2,7 +2,7 @@ from models.notes_Modeles import Notes_model
 from models.absences_Modeles import Absence_model
 
 
-class Management :
+class GestionTeacher :
     def __int__(self):
         self.Model_Notes = Notes_model ()
         self.Model_Absences=Absence_model()
@@ -99,8 +99,9 @@ class Management :
         
     def Mombre_Absences_Etudiant(self):
         print("\n")
-        student_id=input("entrez id  de l'étudiant pour avoir la Moyennes")
-        self.Model_Absences.nombre_absences_etudiant()
+        student_id=input("entrez id  de l'étudiant pour avoir les heures absences : ")
+        resultat=self.Model_Absences.nombre_absences_etudiant(student_id)
+        return resultat
         
     def Supprimer_Toutes_Les_Absences_Etudiant(self):
         print("\n")
@@ -109,7 +110,7 @@ class Management :
             self.Model_Absences.supprimer_toutes_les_absences()
             
         else:
-            print("Suppression annulée.")
+            print("Toutes les absences ont été supprimées.")
 
     
     def Liste_Toutes_Absences_Etudiant(self):
@@ -128,3 +129,10 @@ class Management :
         
         else:
             print("Suppression annulée")
+
+
+    def Rechercher_Moyenne_Etudiant(self):
+        print("\n")
+        student_id=input("entrez l'id de l'étudant :" )
+        resultat= self.Model_Notes.rechercher_moyenne(student_id)
+        return resultat 
