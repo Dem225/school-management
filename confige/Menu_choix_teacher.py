@@ -15,7 +15,7 @@ MENU_GESTION_DES_NOTES = """
   ───────────────────────────────────────────────────────────
                ⚠️ 7. Supprimer TOUTES les notes(interdie )
                💀 8. Supprimer la table des notes (Définitif)
-               ↩️  9. Retour au menu précédent
+               ↩️ 9. Retour au menu précédent
 ###############################################################
 """
 

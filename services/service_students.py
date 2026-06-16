@@ -3,8 +3,8 @@ from models.notes_Modeles import Notes_model
 
 class GestionStudents:
     def __init__(self):
-        self.module_Absence=Absence_model ()
-        self.module_Notes =Notes_model ()
+        self.module_Absence=Absence_model()
+        self.module_Notes =Notes_model()
 
     def Liste_Moyenne_Etudiant(self):
         print("\n")
@@ -16,20 +16,14 @@ class GestionStudents:
     def Liste_Notes_Etudiant(self):
         print("\n    ")
         id_note = input("entrez l'id de la note à rechercher : ")
-        note = self.Model_Notes.rechercher_note(id_note)
-        return note
+        ressultat  = self.module_Notes.rechercher_note(id_note)
+        return ressultat
     
 
     def Liste_Absences_Etudiant(self):
         print("\n")
         student_id=input("entrez id  de l'étudiant pour avoir les heures absences : ")
         self.module_Absence.nombre_absences_etudiant(student_id)
-    
-    def Liste_Mombre_Absences_Etudiant(self):
-        print("\n")
-        student_id=input("entrez id  de l'étudiant pour avoir les heures absences : ")
-        resultat=self.module_Absence.nombre_absences_etudiant(student_id)
-        return resultat
     
     
     def Afficher_Toutes_Absences_Etudiant(self):

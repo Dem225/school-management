@@ -15,7 +15,7 @@ def Gere_choix_teacher():
         Choix = input("Entrez votre Choix : ")
         
         # ==========================================
-        # SOU-MENU : GESTION DES NOTES
+        # SOUS-MENU : GESTION DES NOTES
         # ==========================================
         if Choix == '1':
             while True: 

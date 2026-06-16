@@ -81,7 +81,7 @@ MENU_GESTION_MODIFICATION_DES_UTILISATEURS = """
 #  ─────────────────────────────────────────────────────────  #
 #                                                             #
 #         [👤 1] Nom                                          #
-#         [🎖️ 2] role                                        #
+#         [🎖️ 2] role                                          #
 #         [🔑 3] password                                     #
 #         [   4]  Option pour quitter ce sous-menu            # 
 #                                                             #
