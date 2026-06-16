@@ -8,7 +8,7 @@ class Sujet_matiere(ManagerBase):
         self.cusor.execute("""
             CREATE TABLE IF NOT EXISTS subjects (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                nom TEXT NOT NULL,                                  
+                matiere TEXT NOT NULL,                                  
                 teacher_id INTEGER,
                 FOREIGN KEY (teacher_id) REFERENCES teachers(id)
                 ON DELETE SET NULL
@@ -75,6 +75,7 @@ class Sujet_matiere(ManagerBase):
         print(" La table 'subjects' a été définitivement supprimée de la base de données !")
         return True
        
-            
+   
+
     def close(self):
         self.connecte.close()

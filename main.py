@@ -1,8 +1,7 @@
 from services.services_auth import CONNEXION_User
-from confige.Menu import  MENU_PROFESSEUR, MENU_ETUDIANT
 from utils.gere_choix_utilisateur_principale import gerer_choix_admin
 from utils.gestione_teacher import Gere_choix_teacher
-
+from utils.gestione_students import Gere_choix_student
 def main():
     role = CONNEXION_User()
     if role == 'admin':
@@ -13,22 +12,11 @@ def main():
        
 
     elif role == 'étudiant':
-        print(MENU_ETUDIANT)
+        Gere_choix_student()
        
 if __name__ == '__main__':
     
     main()
-
-
-
-
-
-
-
-
-
-
-
 
 
 

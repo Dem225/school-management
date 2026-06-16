@@ -66,22 +66,22 @@ class GestionAdmin:
     # ==========================================
     def ajouter_professeur(self):
         print("\n    ")
-        non = input("entrez votre non : ")
-        matiere = input("entrez votre matiere : ")
-        self.modele_prof.Ajouter(non, matiere)
-        print("Utilisateur modifié avec succès.")
+        nom = input("Entrez votre nom : ")
+        subject_id = input("Entrez l'ID de la matière enseignée : ")
+        self.modele_prof.Ajouter(nom, subject_id)
+        print("PROFESSEURS ajoutez  avec succès.")
 
     def supprimer_professeur(self):
         print("\n    ")
         id_teacher = input("entrez votre id_teacher : ")
         self.modele_prof.supprimer(id_teacher)
-        print("Utilisateur modifié avec succès.")
+        print("professeur supprimer avec succès.")
         
     def modifier_professeur(self):
         print("\n    ")
         id_teacher = input("entrez votre id_teacher : ")
-        matiere = input("entrez votre matiere : ")
-        self.modele_prof.Modifier(matiere, id_teacher)
+        subject_id = input("entrez votre matiere : ")
+        self.modele_prof.Modifier(subject_id, id_teacher)
         print("Utilisateur modifié avec succès.")
             
     def rechercher_professeur(self):

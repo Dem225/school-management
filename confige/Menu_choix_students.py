@@ -6,11 +6,11 @@ MENU_CONSULTATION_ETUDIANT = """
 #                                                             #
 #  ─────────────────────────────────────────────────────────  #
 #                                                             #
-#         [📈 1] Consulter ma moyenne                         #
-#         [🔎 2] Rechercher une note                          #
-#         [🔢 3] Total des absences                           #
-#         [📋 4] Liste le nombre des absences                 #
-#         [🚪 5] Quitter l'espace                             #
+#         [ 1] Consulter ma moyenne                           #
+#         [ 2] Rechercher une note                            #
+#         [ 3] Total des absences                             #
+#         [ 4] Liste le nombre des absences                   #
+#         [ 5] Quitter l'espace                               #
 #                                                             #
 ###############################################################
 """

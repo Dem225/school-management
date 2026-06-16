@@ -6,7 +6,7 @@ from confige.Menu import MENU_PRINCIPALE
 def CONNEXION_User():
     
     print(MENU_PRINCIPALE)
-    Choix_connect=input("📥 Entrez le numéro de votre option : ")
+    Choix_connect=input(" Entrez le numéro de votre option : ")
     if Choix_connect=='1':
         
         print(MENU_CONNECTION)

@@ -6,16 +6,16 @@ MENU_GESTION_DES_NOTES = """
 #                                                             #
 ###############################################################
 
-               ➕ 1. Ajouter une note
-               ❌ 2. Supprimer une note
-               📝 3. Modifier une note
-               🧮 4. Afficher la moyenne d'un étudiant
-               🔍 5. Rechercher une note
-               📋 6. Afficher toutes les notes
+                1. Ajouter une note
+                2. Supprimer une note
+                3. Modifier une note
+                4. Afficher la moyenne d'un étudiant
+                5. Rechercher une note
+                6. Afficher toutes les notes
   ───────────────────────────────────────────────────────────
-               ⚠️ 7. Supprimer TOUTES les notes(interdie )
-               💀 8. Supprimer la table des notes (Définitif)
-               ↩️ 9. Retour au menu précédent
+                7. Supprimer TOUTES les notes(interdie )
+                8. Supprimer la table des notes (Définitif)
+                9. Retour au menu précédent
 ###############################################################
 """
 
