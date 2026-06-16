@@ -25,7 +25,7 @@ MENU_PROFESSEUR = """
 #                                                             #
 #  ─────────────────────────────────────────────────────────  #
 #                                                             #
-#         [1] Saisir les notes des étudiants                  #
+#         [1] Gérer des notes des étudiants                   #
 #         [2] Gérer les  absences des étudiants               #
 #         [3] DECONNEXION                                     #
 #                                                             #
