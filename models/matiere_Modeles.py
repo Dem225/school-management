@@ -22,7 +22,7 @@ class Sujet_matiere(ManagerBase):
             return False
             
         self.cusor.execute("""
-            INSERT INTO subjects (nom, teacher_id) 
+            INSERT INTO subjects (matiere, teacher_id) 
             VALUES (?, ?);
         """, (matiere, teacher_id))
         self.connecte.commit()

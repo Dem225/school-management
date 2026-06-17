@@ -1,10 +1,12 @@
 from models.utlisateur_Modeles import Utilisateur
 from models.teachers_Modeles import ProfesseurModel
 from models.students_Modeles import studentsModel
+from models.matiere_Modeles import Sujet_matiere
 from utils.util_Matricule import genere_matricule
 class GestionAdmin:
     def __init__(self):
         self.modele_user = Utilisateur()
+        self.modele_prof_matiere=Sujet_matiere()
         self.modele_prof = ProfesseurModel()
         self.modele_etudiant = studentsModel()
 
@@ -83,7 +85,14 @@ class GestionAdmin:
         subject_id = input("entrez votre matiere : ")
         self.modele_prof.Modifier(subject_id, id_teacher)
         print("Utilisateur modifié avec succès.")
-            
+        
+    def consigne_matiere_professeur(self):
+        print("\n    ")
+        teacher_id=input("entrez ID du professuere : ")
+        matiere=input("entrez le nom de la Matiere :")
+        self.modele_prof_matiere.ajouter_matiere(teacher_id,matiere)
+        print(f" Matière '{matiere}' ajoutée avec succès !")
+        
     def rechercher_professeur(self):
         print("\n    ")
         id_teacher = input("entrez votre id_teacher : ")

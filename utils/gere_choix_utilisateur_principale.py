@@ -43,15 +43,17 @@ def gerer_choix_admin():
                 
                 if Choix_Menu_PROFESSEURS == '1':
                     gestion.ajouter_professeur()
-                elif Choix_Menu_PROFESSEURS == '2':
-                    gestion.supprimer_professeur()
+                elif Choix_Menu_PROFESSEURS=='2':
+                    gestion.consigne_matiere_professeur()
                 elif Choix_Menu_PROFESSEURS == '3':
-                    gestion.modifier_professeur()
+                    gestion.supprimer_professeur()
                 elif Choix_Menu_PROFESSEURS == '4':
-                    gestion.rechercher_professeur()
+                    gestion.modifier_professeur()
                 elif Choix_Menu_PROFESSEURS == '5':
+                    gestion.rechercher_professeur()
+                elif Choix_Menu_PROFESSEURS == '6':
                     gestion.listes_touts_prof()
-                elif Choix_Menu_PROFESSEURS == '6':  
+                elif Choix_Menu_PROFESSEURS == '7':  
                     break
                     
         elif choix == '3':

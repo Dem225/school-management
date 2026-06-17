@@ -26,11 +26,12 @@ MENU_GESTION_DES_PROFESSEURS = """
 ###############################################################
 
                 1. ajouter_professeur
-                2. supprimer_professeur
-                3. modifier_professeur
-                4. rechercher_professeur
-                5. listes_touts_professeur
-                6. Option de retour au menu admin principal
+                2. consigner une matiere a un professeur
+                3. supprimer_professeur
+                4. modifier_professeur
+                5. rechercher_professeur
+                6. listes_touts_professeur
+                7. Option de retour au menu admin principal
                    
 ###############################################################
 """
