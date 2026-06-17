@@ -32,6 +32,7 @@ MENU_GESTION_DES_PROFESSEURS = """
                 5. rechercher_professeur
                 6. listes_touts_professeur
                 7. Option de retour au menu admin principal
+                8. supprimer les donnée de la table 
                    
 ###############################################################
 """

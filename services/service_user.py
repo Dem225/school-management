@@ -92,9 +92,18 @@ class GestionAdmin:
         print("\n    ")
         teacher_id=input("entrez ID du professuere : ")
         matiere=input("entrez le nom de la Matiere :")
-        self.modele_prof_matiere.ajouter_matiere(teacher_id,matiere)
+        self.modele_prof_matiere.ajouter_matiere(matiere,teacher_id)
         print(f" Matière '{matiere}' ajoutée avec succès !")
         
+    def supprimer_contenue_matiere(self):
+        print("\n    ")
+        choix=input("entrez ('oui'/ 'non')")
+        if choix=='oui':
+            self.modele_prof_matiere.supprimer_tous_les_matieres()
+            print("c'est ok ")
+        else:
+            print("annuele")
+
     def rechercher_professeur(self):
         print("\n    ")
         id_teacher = input("entrez votre id_teacher : ")

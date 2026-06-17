@@ -53,6 +53,8 @@ def gerer_choix_admin():
                     gestion.rechercher_professeur()
                 elif Choix_Menu_PROFESSEURS == '6':
                     gestion.listes_touts_prof()
+                elif Choix_Menu_PROFESSEURS=='8':
+                    gestion.supprimer_contenue_matiere()
                 elif Choix_Menu_PROFESSEURS == '7':  
                     break
                     
