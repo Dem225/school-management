@@ -87,6 +87,8 @@ class GestionAdmin:
         print("Utilisateur modifié avec succès.")
         
     def consigne_matiere_professeur(self):
+        print("profsseur list available ")
+        self.listes_touts_prof()
         print("\n    ")
         teacher_id=input("entrez ID du professuere : ")
         matiere=input("entrez le nom de la Matiere :")
@@ -104,7 +106,7 @@ class GestionAdmin:
         print("\n ")
         resultats=self.modele_prof.Liste_tout_professeur()
         for i in resultats:
-            print(i)
+            print("ID :",i[0],"nom :",i[1],"matiere_id:",i[2])
 
     # ==========================================
     # GESTION DES ÉTUDIANTS
