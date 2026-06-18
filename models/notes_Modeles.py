@@ -55,7 +55,7 @@ class Notes_model(ManagerBase):
 
     def supprimer_toutes_les_notes(self):
         self.cusor.execute("DELETE FROM grades")
-        self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='grades'")
+        self.cusor.execute("DELETE FROM sqlite_sequence WHERE matiere='grades'")
         self.connecte.commit()
         print(" Toutes les notes ont été supprimées.")
 
@@ -70,10 +70,21 @@ class Notes_model(ManagerBase):
     def liste_tout_note(self):
         self.cusor.execute("SELECT * FROM grades")
         return self.cusor.fetchall()
-
+    
+    def liste_tout_note_etudiant(self, student_id):
+        
+        self.cusor.execute("""
+            SELECT subjects.matiere, grades.note 
+            FROM grades 
+            INNER JOIN subjects ON grades.subject_id = subjects.id 
+            WHERE grades.student_id = ?
+        """, (student_id,))
+        return self.cusor.fetchall()
+        
+  
     def supprimer_table_notes_definitivement(self):
         self.cusor.execute("DROP TABLE IF EXISTS grades")
-        self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='grades'")
+        self.cusor.execute("DELETE FROM sqlite_sequence WHERE matiere='grades'")
         self.connecte.commit()
         print(" La table 'grades' a été définitivement supprimée !")
 

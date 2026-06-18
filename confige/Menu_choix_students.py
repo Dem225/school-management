@@ -10,7 +10,8 @@ MENU_CONSULTATION_ETUDIANT = """
 #         [ 2] Rechercher une note                            #
 #         [ 3] Mon total d'heures d'absences                  #
 #         [ 4] Afficher toutes les absences de l'école        #
-#         [ 5] Quitter l'espace                               #
+#         [ 5] Listes tout mes notes                          #
+#         [ 6] Quitter l'espace                               #
 #                                                             #
 ###############################################################
 """

@@ -13,7 +13,7 @@ def Gere_choix_student():
             regularisation.Liste_Moyenne_Etudiant()
             
         elif choix == '2':
-            regularisation.Liste_Notes_Etudiant()
+            regularisation.Rechercher_Note()
 
         elif choix == '3':
             
@@ -22,10 +22,13 @@ def Gere_choix_student():
         elif choix == '4':
            
             regularisation.Afficher_Toutes_Absences_Etudiant()
-
-        elif choix == "5":
+            
+        elif choix =='5':
+            regularisation.Listes_Tout_Note_Etudant()
+            
+        elif choix == "6":
             print("Fermeture de l'espace consultation étudiant. Au revoir !")
             break
             
         else:
-            print("Option invalide ! Veuillez choisir un nombre entre 1 et 5.")
+            print("Option invalide ! Veuillez choisir un nombre entre 1 et 6.")

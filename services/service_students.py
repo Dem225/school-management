@@ -14,7 +14,7 @@ class GestionStudents:
         print(f" Moyenne générale de l'étudiant ID {student_id} : {resultat:.2f}/20")
         return resultat 
 
-    def Liste_Notes_Etudiant(self):
+    def Rechercher_Note(self):
         print("\n")
         id_note = input("Entrez l'id de la note à rechercher : ")
         resultat = self.module_Notes.rechercher_note(id_note)
@@ -24,7 +24,21 @@ class GestionStudents:
         else:
             print(" Aucune note trouvée avec cet identifiant.")
         return resultat
-
+   
+    def Listes_Tout_Note_Etudant(self):
+        print("\n  ")
+        student_id = int(input("Entrez l'id student : "))
+        resultat = self.module_Notes.liste_tout_note_etudiant(student_id)
+        
+        if not resultat:
+            print("Aucune note trouvée pour cet étudiant.")
+        else:
+            for ligne in resultat:
+                nom_matiere = ligne[0]
+                note_valeur = ligne[1]
+                print(f" {nom_matiere} ➔ Note : {note_valeur}/20")
+        print("\n")
+    
     def Liste_Absences_Etudiant(self):
         print("\n")
         student_id = input("Entrez l'id de l'étudiant pour avoir le nombre d'absences : ")
