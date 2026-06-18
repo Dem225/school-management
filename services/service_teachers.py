@@ -3,11 +3,10 @@ from models.absences_Modeles import Absence_model
 
 
 class GestionTeacher :
-    def __int__(self):
-        self.Model_Notes = Notes_model ()
+    def __init__(self):
+        self.Model_Notes =Notes_model()
         self.Model_Absences=Absence_model()
-
-
+      
     #  ==========================================
     #  GESTION DES NOTES DES ÈTUDIANTS
     # ==========================================
@@ -15,9 +14,9 @@ class GestionTeacher :
     def Ajouter_Notes_Etudiant(self):
         print("\n    ")
         
-        student_id=input("entrez id de l'étudiant : ")
-        subject_id=input("entrez id Matiere : ")
-        note =input("entrez la note commpris en 0 et 20 :")
+        student_id=int(input("entrez id de l'étudiant : "))
+        subject_id=int(input("entrez id Matiere : "))
+        note =float(input("entrez la note commpris en 0 et 20 :"))
         self.Model_Notes.ajouter_note(student_id,subject_id,note)
         print(f"Note de {note}/20 ajoutée avec succès pour l'étudiant ID {student_id} !")
         
@@ -79,9 +78,10 @@ class GestionTeacher :
         print("\n    ")
         student_id = input("entrez l'id de l'étudiant : ")
         date = input("entrez la date de l'absence (JJ/MM/AAAA) : ")
-        justifie = input("L'absence est-elle justifiée ? (1 pour oui, 0 pour non) : ")
+        status = input("L'absence est-elle justifiée ? (1 pour oui, 0 pour non) : ")
         
-        self.Model_Absences.ajouter_absence_(student_id, date, justifie)
+        self.Model_Absences.ajouter_absence(student_id, date, status)
+        print(f" Absence enregistrée pour l'étudiant ID {student_id} à la date du {date} !")
         
     def Supprimer_Absence_Etudiant(self):
         print("\n    ")

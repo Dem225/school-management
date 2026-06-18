@@ -10,19 +10,19 @@ class Absence_model(ManagerBase):
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 student_id INTEGER NOT NULL,
                 date TEXT NOT NULL,
-                justifie INTEGER DEFAULT 0, -- 0 = Non justifié, 1 = Justifié
+                status INTEGER DEFAULT 0, -- 0 = Non justifié, 1 = Justifié
                 FOREIGN KEY (student_id) REFERENCES students(id)
             );
         """)
         self.connecte.commit()
 
-    def ajouter_absence(self, student_id, date, justifie=0):
+    def ajouter_absence(self, student_id, date, status=0):
         self.cusor.execute("""
-            INSERT INTO absences (student_id, date, justifie) 
+            INSERT INTO absences (student_id, date, status) 
             VALUES (?, ?, ?);
-        """, (student_id, date, justifie))
+        """, (student_id, date, status))
         self.connecte.commit()
-        print(f" Absence enregistrée pour l'étudiant ID {student_id} à la date du {date} !")
+        
         return True
 
     def supprimer_absence(self, id_absence):
@@ -33,7 +33,7 @@ class Absence_model(ManagerBase):
     def justifier_absence(self, id_absence):
         self.cusor.execute("""
             UPDATE absences 
-            SET justifie = 1
+            SET status = 1
             WHERE id = ?
         """, (id_absence,))
         self.connecte.commit()

@@ -3,7 +3,7 @@ from database.DB import ManagerBase
 class Notes_model(ManagerBase):
     def __init__(self):
         super().__init__()
-        
+      
     def believe_table_notes(self):
         self.cusor.execute("""
             CREATE TABLE IF NOT EXISTS grades (
