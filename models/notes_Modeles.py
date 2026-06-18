@@ -4,7 +4,7 @@ class Notes_model(ManagerBase):
     def __init__(self):
         super().__init__()
       
-    def believe_table_notes(self):
+    def creer_table_notes(self):
         self.cusor.execute("""
             CREATE TABLE IF NOT EXISTS grades (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -27,15 +27,15 @@ class Notes_model(ManagerBase):
             VALUES (?, ?, ?);
         """, (student_id, subject_id, note))
         self.connecte.commit()
-       
         return True
 
     def supprimer_note(self, id_note):
         self.cusor.execute("DELETE FROM grades WHERE id = ?", (id_note,))
         self.connecte.commit()
-       
 
     def modifier_note_valeur(self, id_note, nouvelle_note):
+        # Sécurité : on convertit en float au cas où input() envoie une chaîne
+        nouvelle_note = float(nouvelle_note)
         if not (0 <= nouvelle_note <= 20):
             print("Erreur : La note doit être comprise entre 0 et 20.")
             return False 
@@ -50,8 +50,8 @@ class Notes_model(ManagerBase):
         return True
 
     def calculer_moyenne_etudiant(self, student_id):
-        self.cursor.execute("SELECT AVG(note) FROM grades WHERE student_id = ?", (student_id,))
-        return self.cursor.fetchone()[0] or 0.0
+        self.cusor.execute("SELECT AVG(note) FROM grades WHERE student_id = ?", (student_id,))
+        return self.cusor.fetchone()[0] or 0.0
 
     def supprimer_toutes_les_notes(self):
         self.cusor.execute("DELETE FROM grades")
@@ -59,9 +59,9 @@ class Notes_model(ManagerBase):
         self.connecte.commit()
         print(" Toutes les notes ont été supprimées.")
 
-    def rechercher_moyenne(self,student_id):
-        self.cusor.execute("SELECT AVG(note) FROM grades WHERE student_id = ?",(student_id))
-        return self.cusor.fetchall()[0] or 0.0
+    def rechercher_moyenne(self, student_id):
+        self.cusor.execute("SELECT AVG(note) FROM grades WHERE student_id = ?", (student_id,))
+        return self.cusor.fetchone()[0] or 0.0
 
     def rechercher_note(self, id_note):
         self.cusor.execute("SELECT * FROM grades WHERE id = ?", (id_note,))

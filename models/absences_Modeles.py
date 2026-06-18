@@ -41,7 +41,8 @@ class Absence_model(ManagerBase):
 
     def nombre_absences_etudiant(self, student_id):
         self.cusor.execute("SELECT COUNT(*) FROM absences WHERE student_id = ?", (student_id,))
-        return self.cursor.fetchone()[0]
+        resultat = self.cusor.fetchone()
+        return resultat[0] if resultat else 0
 
     def supprimer_toutes_les_absences(self):
         self.cusor.execute("DELETE FROM absences")

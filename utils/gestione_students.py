@@ -3,25 +3,29 @@ from confige.Menu_choix_students import MENU_CONSULTATION_ETUDIANT
 
 
 def Gere_choix_student():
-    regularisation=GestionStudents()
+    regularisation = GestionStudents()
     
     while True:
         print(MENU_CONSULTATION_ETUDIANT)
-        choix=input("entrez votre choix : ")
-        if choix=='1':
+        choix = input("Entrez votre choix : ")
+        
+        if choix == '1':
             regularisation.Liste_Moyenne_Etudiant()
-        elif choix =='2':
+            
+        elif choix == '2':
             regularisation.Liste_Notes_Etudiant()
 
-        elif choix=='3':
-            regularisation.Afficher_Toutes_Absences_Etudiant()
-        
-        elif choix =='4':
+        elif choix == '3':
+            
             regularisation.Liste_Absences_Etudiant()
-
+        
+        elif choix == '4':
+           
+            regularisation.Afficher_Toutes_Absences_Etudiant()
 
         elif choix == "5":
             print("Fermeture de l'espace consultation étudiant. Au revoir !")
             break
+            
         else:
-                print("Option invalide ! Veuillez choisir un nombre entre 1 et 5.")
+            print("Option invalide ! Veuillez choisir un nombre entre 1 et 5.")
