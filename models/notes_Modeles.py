@@ -61,7 +61,7 @@ class Notes_model(ManagerBase):
 
     def rechercher_moyenne(self, student_id):
         self.cusor.execute("SELECT AVG(note) FROM grades WHERE student_id = ?", (student_id,))
-        return self.cusor.fetchone()[0] or 0.0
+        return self.cusor.fetchone()
 
     def rechercher_note(self, id_note):
         self.cusor.execute("SELECT * FROM grades WHERE id = ?", (id_note,))
