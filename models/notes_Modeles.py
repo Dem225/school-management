@@ -34,7 +34,7 @@ class Notes_model(ManagerBase):
         self.connecte.commit()
 
     def modifier_note_valeur(self, id_note, nouvelle_note):
-        # Sécurité : on convertit en float au cas où input() envoie une chaîne
+       
         nouvelle_note = float(nouvelle_note)
         if not (0 <= nouvelle_note <= 20):
             print("Erreur : La note doit être comprise entre 0 et 20.")
