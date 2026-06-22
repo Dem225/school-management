@@ -26,7 +26,7 @@ class Utilisateur(ManagerBase):
                 VALUES (?, ?, ?, ?)
             """, (nom, role, user_name, password))
             self.connecte.commit()
-                  
+            return {"succes": True}     
         except sqlite3.IntegrityError as e:
             error_msg = str(e).lower()
             if "check" in error_msg:
