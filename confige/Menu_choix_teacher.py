@@ -12,6 +12,7 @@ MENU_GESTION_DES_NOTES = """
                 4. Afficher la moyenne d'un étudiant
                 5. Rechercher une note
                 6. Afficher toutes les notes
+                7. afficher_meilleurs_etudiants
   ───────────────────────────────────────────────────────────
                 7. Supprimer TOUTES les notes(interdie )
                 8. Supprimer la table des notes (Définitif)
