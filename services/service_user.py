@@ -16,26 +16,43 @@ class GestionAdmin:
     # ==========================================
     def ajouter_utilisateur(self):
         print("\n--- Création d'un nouvel utilisateur ---")
-        nom = input("Entrez votre nom : ")
-        role = input("Entrez votre role (admin/professeur/étudiant) : ")
-        password = input("Entrez votre mot de passe : ")
-        user_name = input("Entrez votre user_name (pseudo) : ")
-        resultat = self.modele_user.ajouter_utilisateur(nom, role, user_name, password)
-        if resultat["succes"]:
-            print(f"Utilisateur {user_name} ajouté avec succès.")
-            logging.info(f"Utilisateur ajouté : {user_name}")
-        else:
-            print(f"Erreur : {resultat['message']}")
+        
+        nom = input("Entrez votre nom : ").strip()
+        role = input("Entrez votre rôle (admin/professeur/étudiant) : ").strip()
+        password = input("Entrez votre mot de passe : ").strip()
+        user_name = input("Entrez votre user_name (pseudo) : ").strip()
 
+       
+        if not nom or not role or not user_name or not password:
+            print("\nErreur : Tous les champs doivent être remplis.")
+            logging.warning("Tentative d'ajout avec des champs vides.")
+            return
+
+        if len(password) < 4:
+            print("\nErreur : Le mot de passe doit comporter au moins 4 caractères.")
+            logging.warning(f"Mot de passe trop court pour l'utilisateur {user_name}.")
+            return
+
+       
+        resultat = self.modele_user.ajouter_utilisateur(nom, role, user_name, password)
+     
+        if resultat["succes"]:
+            print(f"\nSuccès : Utilisateur {user_name} ajouté.")
+            logging.info(f"Utilisateur ajouté avec succès : {user_name}")
+        else:
+            print(f"\nErreur : {resultat['message']}")
+            logging.error(f"Échec ajout utilisateur {user_name} : {resultat['message']}")
+
+             
     def supprimer_utilisateur(self):
         print("\n    ")
-        id_user = input("Entrez ID de utlisateur que vous voulez surpprimer : ")
+        id_user = input("Entrez ID de utlisateur que vous voulez surpprimer : ").strip()
         self.modele_user.supprimer_utilisateur(id_user)
         print("Utilisateur suppressé avec succès.")
         logging.warning(f"ALETE UN UTILISATEUR ÉTÉ SUPPRIMERER DE LA BASE DE BONNÉ A L'ID ({id_user})")
 
     def rechercher_utilisateur(self):
-        id_user = input("Entrez votre id_user : ")
+        id_user = input("Entrez votre id_user : ").strip()
         resultat=self.modele_user.rechercher_utilisateur(id_user)
         print(f" \n Recherch Result:" ,resultat)
         logging.info(f"UNE RECHERCHE A ÉTÉ ÈFFECTUER PAR LA ID  {id_user}")
@@ -49,23 +66,23 @@ class GestionAdmin:
 
     def modifiers_utilisateur_nom(self):
         print("\n   ")
-        id_students=input("Entrez id_students : ")
-        nom=input("Entrez le nouveux nom : ")
+        id_students=input("Entrez id_students : ").strip()
+        nom=input("Entrez le nouveux nom : ").strip()
         self.modele_user.modifier_utilisateur_nom(nom,id_students)
         print(f" \n le nom a été modifier pour : {nom}")
         logging.info(f"UNE MODIFICATION SUR  LE NOM D'UN UTLISATEUR A L'ID :( {id_students} )")
 
     def modifiers_utilisateur_role(self):
         print("\n   ")
-        id_students=input("Entrez id_students : ")
-        role=input("Entrez le nouveux role : ")
+        id_students=input("Entrez id_students : ").strip()
+        role=input("Entrez le nouveux role : ").strip()
         self.modele_user.modifier_utilisateur_role(role,id_students)
         print(f" \n le nom a été modifier pour : {role}")
         logging.info(f"UNE MODIFICATION SUR  LE ROLE D'UN UTILISATEUR A  L'ID  : ({id_students} )")
     def modifiers_utilisateur_password(self):
         print("\n   ")
-        id_students=input("Entrez id_students : ")
-        password=input("Entrez le nouveux password : ")
+        id_students=input("Entrez id_students : ").strip()
+        password=input("Entrez le nouveux password : ").strip()
         self.modele_user.modifier_utilisateur_password(password,id_students)
         print(f" \n le nom a été modifier pour : {password}")
         logging.info(f"UNE MODIFICATION SUR  LE MOT DE PASSE  D'UN UTILISATEUR A  L'ID  : ({id_students} )")
@@ -75,23 +92,23 @@ class GestionAdmin:
     # ==========================================
     def ajouter_professeur(self):
         print("\n    ")
-        nom = input("Entrez votre nom : ")
-        subject_id = input("Entrez l'ID de la matière enseignée : ")
+        nom = input("Entrez votre nom : ").strip()
+        subject_id = input("Entrez l'ID de la matière enseignée : ").strip()
         self.modele_prof.Ajouter(nom, subject_id)
         print("PROFESSEURS ajoutez  avec succès.")
         logging.info(f" UN PROFESSEURS A ÉTÉ AJOUTEZ A LA BASE DE DONNÉ de non : {nom} ET DE ID MATIERE  : {subject_id}")
 
     def supprimer_professeur(self):
         print("\n    ")
-        id_teacher = input("Entrez votre id_teacher : ")
+        id_teacher = input("Entrez votre id_teacher : ").strip()
         self.modele_prof.supprimer(id_teacher)
         print("professeur supprimer avec succès.")
         logging.warning(f"ALETE UN PROFESSEURS ÉTÉ SUPPRIMER DE LA BASE DE DONNÉ A L'ID ({id_teacher})")
         
     def modifier_professeur(self):
         print("\n    ")
-        id_teacher = input("Entrez votre id_teacher : ")
-        subject_id = input("Entrez votre matiere : ")
+        id_teacher = input("Entrez votre id_teacher : ").strip()
+        subject_id = input("Entrez votre matiere : ").strip()
         self.modele_prof.Modifier(subject_id, id_teacher)
         print("Utilisateur modifié avec succès.")
         logging.info(f"UNE MODIFICATION D'UNE  MATIERER A ID ({subject_id})  SUR LE PROFESSEURS  A L ID ({id_teacher}) ")
@@ -100,15 +117,15 @@ class GestionAdmin:
         print("profsseur list available ")
         self.listes_touts_prof()
         print("\n    ")
-        teacher_id=input("Entrez ID du professuere : ")
-        matiere=input("Entrez le nom de la Matiere :")
+        teacher_id=input("Entrez ID du professuere : ").strip()
+        matiere=input("Entrez le nom de la Matiere :").strip()
         self.modele_prof_matiere.ajouter_matiere(matiere,teacher_id)
         print(f" Matière '{matiere}' ajoutée avec succès !")
         logging.info(f"UNE MATIERE :({matiere}) A ÉTÉ CONSIGNE AUX PROFESSEURS A ID ({teacher_id})")
         
     def supprimer_contenue_matiere(self):
         print("\n    ")
-        choix=input("Entrez ('oui'/ 'non')")
+        choix=input("Entrez ('oui'/ 'non') : ").strip()
         if choix=='oui':
             self.modele_prof_matiere.supprimer_tous_les_matieres()
             print("c'est ok ")
@@ -117,7 +134,7 @@ class GestionAdmin:
 
     def rechercher_professeur(self):
         print("\n    ")
-        id_teacher = input("Entrez votre id_teacher : ")
+        id_teacher = input("Entrez votre id_teacher : ").strip()
         resultat = self.modele_prof.Rechercher(id_teacher)
         print("\nRésultat de la recherche :", resultat)
         logging.info(f"UNE RECHERCHE PAR ID ({id_teacher}) A ÉTÉ  EFFECTUER ")
@@ -136,10 +153,10 @@ class GestionAdmin:
     # ==========================================
     def ajouter_etudiant(self):
         print("\n    ")
-        nom = input("Entrez votre nom : ")
-        prenom = input("Entrez votre prenom : ")
-        age = input("Entrez votre age : ")
-        classe = input("Entrez votre classe : ")
+        nom = input("Entrez votre nom : ").strip()
+        prenom = input("Entrez votre prenom : ").strip()
+        age = input("Entrez votre age : ").strip()
+        classe = input("Entrez votre classe : ").strip()
         matricule = genere_matricule()
         self.modele_etudiant.ajouter(nom, prenom, age, classe, matricule)
         print("Utilisateur modifié avec succès.")

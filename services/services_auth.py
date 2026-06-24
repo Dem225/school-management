@@ -12,6 +12,7 @@ def CONNEXION_User():
             
             while True:
                 print(MENU_CONNECTION)
+                
                 user_name = input("Entrez voutre user_name (pseudo): ")
                 password = input("Entrez votre mot de passe : ")
 
@@ -19,7 +20,8 @@ def CONNEXION_User():
                 verification.creer_table_utilisateur()
                 COMPTE = verification.verifier_identifiants(user_name, password)
                 verification.close()
-
+    
+                
                 if COMPTE:
                     user_name, Role_utilisateur = COMPTE[3], COMPTE[2]
                     print(f"\nConnexion réussie ! Bienvenue, {user_name} ({Role_utilisateur})\n")
