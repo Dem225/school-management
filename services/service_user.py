@@ -19,7 +19,7 @@ class GestionAdmin:
         
         nom = input("Entrez votre nom : ").strip()
         role = input("Entrez votre rôle (admin/professeur/étudiant) : ").strip()
-        password = input("Entrez votre mot de passe : ").strip()
+        password = input("Entrez votre mot de passe (Mot de passe interdi ['1234', '1111', '0000', 'admin', 'password']): ").strip()
         user_name = input("Entrez votre user_name (pseudo) : ").strip()
 
        
@@ -96,13 +96,26 @@ class GestionAdmin:
     # ==========================================
     # GESTION DES PROFESSEURS
     # ==========================================
+   
+
     def ajouter_professeur(self):
-        print("\n    ")
-        nom = input("Entrez votre nom : ").strip()
+        print("\n--- Liste des utilisateurs dans la base de données ---")
+        self.liste_unique()
+        
+        print("\n--- Ajout d'un nouveau professeur ---")
+        nom = input("Entrez le nom du professeur : ").strip()
         subject_id = input("Entrez l'ID de la matière enseignée : ").strip()
-        self.modele_prof.Ajouter(nom, subject_id)
-        print("PROFESSEURS ajoutez  avec succès.")
-        logging.info(f" UN PROFESSEURS A ÉTÉ AJOUTEZ A LA BASE DE DONNÉ de non : {nom} ET DE ID MATIERE  : {subject_id}")
+        id_user = input("Entrez l'ID de l'utilisateur (rôle professeur) : ").strip()
+
+        try:
+         
+            self.modele_prof.Ajouter(nom, subject_id, id_user)
+            print("PROFESSEUR ajouté avec succès.")
+            logging.info(f"PROFESSEUR AJOUTÉ : Nom={nom}, ID Matière={subject_id}, ID User={id_user}")
+        except Exception as e:
+            print(f"Erreur lors de l'ajout dans la base de données : {e}")
+            logging.error(f"Échec ajout professeur {nom} : {e}")
+
 
     def supprimer_professeur(self):
         print("\n    ")
@@ -125,8 +138,9 @@ class GestionAdmin:
         print("\n    ")
         teacher_id=input("Entrez ID du professuere : ").strip()
         matiere=input("Entrez le nom de la Matiere :").strip()
-        self.modele_prof_matiere.ajouter_matiere(matiere,teacher_id)
-        print(f" Matière '{matiere}' ajoutée avec succès !")
+        classe=input("Entrez la nom de la classe :  ").split()
+        self.modele_prof_matiere.ajouter_matiere(matiere,teacher_id,classe)
+        print(f" Matière '{matiere}' et de classe '{classe}' ajoutée avec succès !")
         logging.info(f"UNE MATIERE :({matiere}) A ÉTÉ CONSIGNE AUX PROFESSEURS A ID ({teacher_id})")
         
     def supprimer_contenue_matiere(self):
@@ -153,20 +167,54 @@ class GestionAdmin:
         for i in resultats:
             print("ID :",i[0],"nom :",i[1],"matiere_id:",i[2])
         logging.info(f"UNE RECHERCHE A ÉTÉ EFFECTUER")
+
+    def liste_unique(self):
+        resultat = self.modele_user.liste_utilisateurs_simple()
         
+        print("\nID | Nom | Rôle")
+        print("---------------")
+        for id_u, nom, role in resultat:
+            print(f"{id_u} | {nom} | {role}")
+
     # ==========================================
     # GESTION DES ÉTUDIANTS
     # ==========================================
+   
+
     def ajouter_etudiant(self):
-        print("\n    ")
+        print("\n Ajout d'un nouvel étudiant ")
+        
         nom = input("Entrez votre nom : ").strip()
         prenom = input("Entrez votre prenom : ").strip()
-        age = input("Entrez votre age : ").strip()
+        while True:
+            age_input = input("Entrez l'âge : ").strip()
+            if age_input.isdigit():
+                age = int(age_input)
+                break
+            print("Erreur : Veuillez entrer un âge valide (chiffres uniquement).")
+            logging.error("Erreur : Veuillez entrer un âge valide (chiffres uniquement).")
         classe = input("Entrez votre classe : ").strip()
+        
+       
         matricule = genere_matricule()
-        self.modele_etudiant.ajouter(nom, prenom, age, classe, matricule)
-        print("Utilisateur modifié avec succès.")
-        logging.info(f"UN ÉTUDIANTS A ÉTÉ AJOUTEZ A LA BASE DE DONNÉ DE NOM  :( {nom}) ,DE MATRICULE : ({matricule}) ET DE CLASSE ({classe})")
+        
+        print("\n")
+        self.liste_unique()
+        id_user = input("Entrez l'id correspondant à l'id de l'utilisateur connecté qui a pour role (etudiant): ").strip()
+        
+       
+        self.modele_etudiant.ajouter(nom, prenom, age, classe, matricule, id_user)
+        
+     
+        print("Étudiant ajouté avec succès.")
+        logging.info(
+            f"UN ÉTUDIANT a été ajouté (ID User: {id_user}). "
+            f"Nom: {nom}, Matricule: {matricule}, Classe: {classe}")
+
+
+
+
+
     def supprimer_etudiant(self):
         print("\n    ")
         id_students = input("Entrez votre id_students : ")

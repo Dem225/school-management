@@ -38,7 +38,6 @@ class Utilisateur(ManagerBase):
             
     def supprimer_utilisateur(self, id_user):
         self.cusor.execute("DELETE FROM users WHERE id = ?", (id_user,))
-        self.cusor.execute("DELETE FROM sqlite_sequence WHERE nom='users'")
         self.connecte.commit()
     
     def modifier_utilisateur_nom(self, id_user, nom):
@@ -89,14 +88,14 @@ class Utilisateur(ManagerBase):
         self.cusor.execute("SELECT * FROM users ")
         return self.cusor.fetchall()
     
-
-
-    def supprimer_table_utilisateurs(self):
+    
+    def liste_utilisateurs_simple(self):
         try:
-            self.cusor.execute("DROP TABLE IF EXISTS users")
-            self.connecte.commit() 
+            self.cusor.execute("SELECT id, nom, role FROM users")
+            return self.cusor.fetchall()
         except Exception as e:
-            print(f"Une erreur est survenue lors de la suppression : {e}")
+            print(f"Erreur lors de la récupération des utilisateurs : {e}")
+            return []
         
       
     def close(self):

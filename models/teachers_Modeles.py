@@ -9,21 +9,21 @@ class ProfesseurModel(ManagerBase):
         self.cusor.execute("""
             CREATE TABLE IF NOT EXISTS teachers (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                nom TEXT ,
-                subject_id INTEGER NOT NULL,
-                FOREIGN KEY (subject_id) REFERENCES subjects(id)
+                nom TEXT,
+                subject_id INTEGER NOT null,
+                id_user INTEGER,
+                FOREIGN KEY (subject_id) REFERENCES subjects(id), 
+                FOREIGN KEY (id_user) REFERENCES users(id)
             );
         """)
         self.connecte.commit()
 
-    def Ajouter(self, nom, subject_id):
-
+    def Ajouter(self, nom, subject_id, id_user):
         self.cusor.execute("""
-        INSERT INTO teachers (nom, subject_id) 
-        VALUES (?, ?);
-        """,    (nom, subject_id)
-    
-    )
+            INSERT INTO teachers (nom, subject_id, id_user) 
+            VALUES (?, ?, ?);
+        """, (nom, subject_id, id_user))
+        
         self.connecte.commit()
 
     def supprimer(self, id_teacher):
@@ -47,7 +47,6 @@ class ProfesseurModel(ManagerBase):
         self.cusor.execute("DROP TABLE IF EXISTS teachers;")
         self.connecte.commit()
         
-
     
     def Renommer_columns(self):
         self.cusor.execute("ALTER TABLE teachers RENAME COLUMN matiere TO ;")

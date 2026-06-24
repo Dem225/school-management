@@ -10,23 +10,25 @@ class studentsModel(ManagerBase):
             CREATE TABLE IF NOT EXISTS students (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 nom TEXT NOT NULL,
-                prenom text NOT NULL,
+                prenom TEXT NOT NULL,
                 age INTEGER NOT NULL,
                 classe TEXT NOT NULL,
-                matricule TEXT NOT NULL
+                matricule TEXT NOT NULL,
+                id_user INTEGER,
+                FOREIGN KEY (id_user) REFERENCES users(id)
 
             );
         """)
         self.connecte.commit()
 
-    def ajouter(self, nom, prenom, age, classe, matricule):
+    def ajouter(self, nom, prenom, age, classe, matricule,id_user):
         
         self.cusor.execute(
             """
-                INSERT INTO students (nom, prenom,age,classe,matricule)
-                VALUES (?, ?,?, ?,?)
+                INSERT INTO students (nom, prenom,age,classe,matricule,id_user)
+                VALUES (?, ?,?, ?,?,?)
             """,
-            (nom, prenom, age, classe, matricule),
+            (nom, prenom, age, classe, matricule,id_user),
         )
 
         self.connecte.commit()
@@ -77,7 +79,9 @@ class studentsModel(ManagerBase):
         self.cusor.execute("SELECT * FROM students")
         return self.cusor.fetchall()
 
-        
+    def supprimer_tout_table(self):
+        self.cusor.execute("DROP TABLE IF EXISTS students")
+        self.connecte.commit()
 
     def close(self):
         self.connecte.close()
