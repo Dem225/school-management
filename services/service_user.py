@@ -28,12 +28,18 @@ class GestionAdmin:
             logging.warning("Tentative d'ajout avec des champs vides.")
             return
 
-        if len(password) < 4:
+        if len(password) <= 4:
             print("\nErreur : Le mot de passe doit comporter au moins 4 caractères.")
             logging.warning(f"Mot de passe trop court pour l'utilisateur {user_name}.")
             return
-
-       
+        MOTS_DE_PASSE_INTERDITS = ['1234', '1111', '0000', 'admin', 'password']
+        
+        if password in MOTS_DE_PASSE_INTERDITS:
+            print("Désolé, ce mot de passe est trop facile ! Veuillez en utiliser un plus complexe.")
+            logging.warning("L'utilisateur a tenté d'utiliser un mot de passe trop facile (blacklisté).")
+            return
+            
+        
         resultat = self.modele_user.ajouter_utilisateur(nom, role, user_name, password)
      
         if resultat["succes"]:
