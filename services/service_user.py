@@ -133,15 +133,18 @@ class GestionAdmin:
         logging.info(f"UNE MODIFICATION D'UNE  MATIERER A ID ({subject_id})  SUR LE PROFESSEURS  A L ID ({id_teacher}) ")
         
     def consigne_matiere_professeur(self):
-        print("profsseur list available ")
+        print("Professeurs disponibles :")
         self.listes_touts_prof()
-        print("\n    ")
-        teacher_id=input("Entrez ID du professuere : ").strip()
-        matiere=input("Entrez le nom de la Matiere :").strip()
-        classe=input("Entrez la nom de la classe :  ").split()
-        self.modele_prof_matiere.ajouter_matiere(matiere,teacher_id,classe)
-        print(f" Matière '{matiere}' et de classe '{classe}' ajoutée avec succès !")
-        logging.info(f"UNE MATIERE :({matiere}) A ÉTÉ CONSIGNE AUX PROFESSEURS A ID ({teacher_id})")
+        
+        teacher_id = input("Entrez ID du professeur : ").strip()
+        matiere = input("Entrez le nom de la Matière : ").strip()
+        classe = input("Entrez le nom de la classe : ").strip() 
+        
+        success = self.modele_prof_matiere.ajouter_matiere(matiere, classe, teacher_id)
+        
+        if success:
+            print(f"Matière '{matiere}' pour la classe '{classe}' ajoutée avec succès !")
+            logging.info(f"MATIERE :({matiere}) A ÉTÉ CONSIGNEE AU PROFESSEUR ID ({teacher_id}) POUR LA CLASSE ({classe})")
         
     def supprimer_contenue_matiere(self):
         print("\n    ")

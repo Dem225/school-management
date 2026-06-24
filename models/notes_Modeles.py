@@ -105,10 +105,5 @@ class Notes_model(ManagerBase):
         return self.cusor.fetchall()
 
 
-
-
-
-
-
     def close(self):
         self.connecte.close()
