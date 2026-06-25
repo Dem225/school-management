@@ -77,9 +77,7 @@ class Utilisateur(ManagerBase):
         self.cusor.execute("SELECT * FROM students WHERE id_user = ?", (id_user,))
         return self.cusor.fetchone()
         
-    def get_student_id_from_user_id(self,id_user):
-        self.cusor.execute("SELECT * FROM teachers WHERE id_user = ?", (id_user,))
-        return self.cusor.fetchone()
+    
     
     def supprimer_tous_le_contenue_utilisateur(self):
         self.cusor.execute("DELETE FROM users")
