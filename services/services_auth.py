@@ -19,14 +19,18 @@ def CONNEXION_User():
                 verification = Utilisateur()
                 verification.creer_table_utilisateur()
                 COMPTE = verification.verifier_identifiants(user_name, password)
-                verification.close()
+                
     
                 
                 if COMPTE:
-                    user_name, Role_utilisateur = COMPTE[3], COMPTE[2]
+                    etudiant_id      = verification.get_student_id_from_user_id(COMPTE[0])[0]   
+                    Role_utilisateur = COMPTE[2]   
+                    user_name        = COMPTE[3]   
+                    verification.close()
                     print(f"\nConnexion réussie ! Bienvenue, {user_name} ({Role_utilisateur})\n")
-                    logging.info(f"Mr ou Md :({user_name} )pour role ({Role_utilisateur}) c'est connecter ")
-                    return Role_utilisateur  
+                    logging.info(f"Mr ou Md :({user_name}) pour role ({Role_utilisateur}) c'est connecter")
+                    
+                    return Role_utilisateur, etudiant_id
                 else:
                     print("\n Nom d'utilisateur ou mot de passe incorrect.")
                     logging.warning(f"ÉCHEC DE CONNEXION VEUILLE VOUS RECONNECTER ! ")
