@@ -96,7 +96,7 @@ class Notes_model(ManagerBase):
         query = """
             SELECT u.nom, AVG(g.note) as moyenne 
             FROM grades g
-            JOIN users u ON g.student_id = u.id
+            JOIN students s ON g.student_id = s.id
             GROUP BY u.id
             ORDER BY moyenne DESC
             LIMIT ?

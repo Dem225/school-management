@@ -52,7 +52,8 @@ class studentsModel(ManagerBase):
 
     def Modifier_etudiant_prenom(self,id_students,prenom,):
         
-        self.cusor.execute("UPDATE students SET prenom=? WHERE id=?", (id_students,prenom))
+        self.cusor.execute("UPDATE students SET prenom=? WHERE id=?", (prenom, id_students))
+
         self.connecte.commit()
 
         
@@ -73,6 +74,8 @@ class studentsModel(ManagerBase):
     def Modifier_etudiant_matricule(self,id_students,matricule):
     
         self.cusor.execute("UPDATE students SET matricule=? WHERE id=?" ,(id_students,matricule))
+      
+
         self.connecte.commit()
         
     def Lister_etudiant(self):

@@ -21,14 +21,17 @@ def CONNEXION_User():
                 verification = Utilisateur()
                 verification.creer_table_utilisateur()
                 COMPTE = verification.verifier_identifiants(user_name, password)
-                
+                result = verification.get_student_id_from_user_id(COMPTE[0])
     
                 
                 if COMPTE:
                      
                     Role_utilisateur = COMPTE[2]   
                     if Role_utilisateur == 'étudiant':
-                        etudiant_id      = verification.get_student_id_from_user_id(COMPTE[0])[0]  
+                        if result is None:
+                            print("Aucun profil étudiant associé à ce compte.")
+                            continue
+                        etudiant_id = result[0]
                     elif Role_utilisateur=='admin':
                         id_user          =verification.get_user_id_from_user_id(COMPTE[0])
                     user_name        = COMPTE[3]   
@@ -43,9 +46,9 @@ def CONNEXION_User():
                     print("Veuillez réessayer de vous connecter.\n")
                    
         elif Choix_connect == '2':
-            print("\nMerci, à bientôt ! ")
-            logging.info(f"Mr ou Md {user_name}  pour role {Role_utilisateur} c'est déconnecter  ")
-            sys.exit()  
+            print("\nMerci, à bientôt !")
+            logging.info("Application fermée par l'utilisateur.")
+            sys.exit()
             
         else:
             print("\nOption invalide ! Veuillez choisir 1 ou 2.\n")

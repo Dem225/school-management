@@ -282,7 +282,7 @@ class GestionAdmin:
         print("\n   ")
         id_students=input("Entrez id_students : ")
         matricule=input("Entrez le nouveux matricule : ")
-        self.modele_etudiant.Modifier_etudiant_Non(matricule,id_students)
+        self.modele_etudiant.Modifier_etudiant_matricule(matricule,id_students)
         print(f" \n le nom a été modifier pour : {matricule}")
         logging.info(f"UNE MODIFICATION SUR LE MATRICULE  A L'ID ({id_students}) ")
 
