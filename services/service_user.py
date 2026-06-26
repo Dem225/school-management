@@ -72,8 +72,9 @@ class GestionAdmin:
         print("\n ")
         resultat=self.modele_user.liste_tout_utilisateur()
         for i in resultat:
-            print(i)
-
+            print(f"ID : {i[0]}, NAME : {i[1]}, ROLE : {i[2]}, USER_NAME : {i[3]}, WORD PASS: {i[4]}")
+            logging.info("UNE RECHERCHE A ÉTÉ ÉFFECTUÉ !")
+         
     def modifiers_utilisateur_nom(self):
         print("\n   ")
         id_students=input("Entrez id_students : ").strip()
