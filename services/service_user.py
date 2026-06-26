@@ -27,7 +27,11 @@ class GestionAdmin:
             print("\nErreur : Tous les champs doivent être remplis.")
             logging.warning("Tentative d'ajout avec des champs vides.")
             return
-
+        if len(user_name)<=4:
+            print("\nErreur : Le user_name doit comporter au moins 4 caractères.")
+            logging.warning(f"Mot de passe trop court pour l 'utilisateur {user_name}.")
+            return
+            
         if len(password) <= 4:
             print("\nErreur : Le mot de passe doit comporter au moins 4 caractères.")
             logging.warning(f"Mot de passe trop court pour l'utilisateur {user_name}.")
