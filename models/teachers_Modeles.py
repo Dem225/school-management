@@ -49,8 +49,8 @@ class ProfesseurModel(ManagerBase):
         
     
     def Renommer_columns(self):
-        self.cusor.execute("ALTER TABLE teachers RENAME COLUMN matiere TO ;")
-
+        self.cusor.execute("ALTER TABLE teachers RENAME COLUMN matiere TO subject_name;")
+    
 
 
     

@@ -90,8 +90,8 @@ class Utilisateur(ManagerBase):
         self.connecte.commit()
         
     def rechercher_utilisateur(self,id_user):
-        self.cusor.execute("SELECT * FROM users  WHERE id= ?",(id_user))
-        return self.cusor.fetchall()
+            self.cusor.execute("SELECT * FROM users WHERE id= ?", (id_user,))    
+            return self.cusor.fetchall()
     
     def liste_tout_utilisateur(self):
         self.cusor.execute("SELECT * FROM users ")

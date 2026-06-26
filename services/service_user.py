@@ -78,7 +78,7 @@ class GestionAdmin:
         print("\n   ")
         id_students=input("Entrez id_students : ").strip()
         nom=input("Entrez le nouveux nom : ").strip()
-        self.modele_user.modifier_utilisateur_nom(nom,id_students)
+        self.modele_user.modifier_utilisateur_nom(id_students, nom)
         print(f" \n le nom a été modifier pour : {nom}")
         logging.info(f"UNE MODIFICATION SUR  LE NOM D'UN UTLISATEUR A L'ID :( {id_students} )")
 
