@@ -5,10 +5,10 @@ from utils.gestione_students import Gere_choix_student
 from utils.logger import logging
 
 def main():
-    role, etudiant_id = CONNEXION_User()  
+    role, etudiant_id,id_user = CONNEXION_User()  
     
     if role == 'admin':
-        gerer_choix_admin() 
+        gerer_choix_admin(id_user) 
         
     elif role == 'professeur':
         Gere_choix_teacher()  

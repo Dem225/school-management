@@ -4,6 +4,8 @@ from confige.Menu import  MENU_PRINCIPALE, MENU_CONNECTION
 import logging
 
 def CONNEXION_User():
+    etudiant_id = None
+    id_user = None
     while True:
         print(MENU_PRINCIPALE)
         Choix_connect = input(" Entrez le numéro de votre option : ")
@@ -23,14 +25,18 @@ def CONNEXION_User():
     
                 
                 if COMPTE:
-                    etudiant_id      = verification.get_student_id_from_user_id(COMPTE[0])[0]   
+                     
                     Role_utilisateur = COMPTE[2]   
+                    if Role_utilisateur == 'étudiant':
+                        etudiant_id      = verification.get_student_id_from_user_id(COMPTE[0])[0]  
+                    elif Role_utilisateur=='admin':
+                        id_user          =verification.get_user_id_from_user_id(COMPTE[0])
                     user_name        = COMPTE[3]   
                     verification.close()
                     print(f"\nConnexion réussie ! Bienvenue, {user_name} ({Role_utilisateur})\n")
                     logging.info(f"Mr ou Md :({user_name}) pour role ({Role_utilisateur}) c'est connecter")
                     
-                    return Role_utilisateur, etudiant_id
+                    return Role_utilisateur, etudiant_id,id_user
                 else:
                     print("\n Nom d'utilisateur ou mot de passe incorrect.")
                     logging.warning(f"ÉCHEC DE CONNEXION VEUILLE VOUS RECONNECTER ! ")

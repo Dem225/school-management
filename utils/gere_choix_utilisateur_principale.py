@@ -2,7 +2,7 @@ from confige.Menu import  MENU_PRINCIPALE_ADMINE
 from confige.Menu_choix_admin import MENU_GESTION_DES_UTILISATEURS,MENU_GESTION_DES_PROFESSEURS,MENU_GESTION_DES_ETUDIANTS,MENU_MODIFICATION_DES_ETUDIANTS,MENU_GESTION_MODIFICATION_DES_UTILISATEURS
 from services.service_user import GestionAdmin
 
-def gerer_choix_admin():
+def gerer_choix_admin(id_user):
    
     gestion = GestionAdmin()
     
