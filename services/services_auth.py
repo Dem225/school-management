@@ -21,11 +21,11 @@ def CONNEXION_User():
                 verification = Utilisateur()
                 verification.creer_table_utilisateur()
                 COMPTE = verification.verifier_identifiants(user_name, password)
-                result = verification.get_student_id_from_user_id(COMPTE[0])
+                
     
                 
                 if COMPTE:
-                     
+                    result = verification.get_student_id_from_user_id(COMPTE[0])
                     Role_utilisateur = COMPTE[2]   
                     if Role_utilisateur == 'étudiant':
                         if result is None:
