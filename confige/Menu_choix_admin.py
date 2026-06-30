@@ -51,7 +51,8 @@ MENU_GESTION_DES_ETUDIANTS = """
 #         [ 3] rechercher_etudiant                            #
 #         [ 4] listes_touts_etudiant                          #
 #         [ 5] modification information                       #
-#         [6] Option de retour au menu admin principal        #
+#         [ 6] afficher_meilleurs_etudiants                   #
+#         [7] Option de retour au menu admin principal        #
 ###############################################################
 """
 

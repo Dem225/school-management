@@ -77,21 +77,7 @@ class GestionTeacher :
         else:
             print("Suppression annulée.")
             
-    def afficher_meilleurs_etudiants(self):
-        try:
-            nb = int(input("Combien d'étudiants souhaitez-vous afficher ? "))
-            resultats = self.Model_Notes.identifier_meilleurs_etudiants(nb)
-            
-            print(f"\n Top {nb} des meilleurs étudiants")
-            if resultats:
-                for i, (nom, moyenne) in enumerate(resultats, 1):
-                    print(f"{i}. {nom} : {moyenne:.2f}/20")
-            else:
-                print("Aucune donnée disponible pour le moment.")
-            
-        except ValueError:
-            print("Erreur : Veuillez entrer un nombre entier valide.")
-
+    
     #  ==========================================
     #  GESTION DES ABSENCE DES ÈTUDIANTS
     # ==========================================

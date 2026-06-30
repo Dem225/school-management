@@ -34,8 +34,6 @@ def Gere_choix_teacher():
                     classification.Recherche_Notes_Etudiant()
                 elif choix_menu_notes == '6':
                     classification.Listes_Notes_Etudiant()
-                elif choix_menu_notes=='7':
-                    classification.afficher_meilleurs_etudiants()
                 elif choix_menu_notes == '9':  
                     print(" Retour au menu Professeur...")
                     break  
