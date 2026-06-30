@@ -90,20 +90,5 @@ class Notes_model(ManagerBase):
 
 
 
-
-
-    def identifier_meilleurs_etudiants(self, nombre):
-        query = """
-            SELECT u.nom, AVG(g.note) as moyenne 
-            FROM grades g
-            JOIN students s ON g.student_id = s.id
-            GROUP BY u.id
-            ORDER BY moyenne DESC
-            LIMIT ?
-        """
-        self.cusor.execute(query, (nombre,))
-        return self.cusor.fetchall()
-
-
     def close(self):
         self.connecte.close()

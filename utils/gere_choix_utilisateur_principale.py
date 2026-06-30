@@ -85,12 +85,13 @@ def gerer_choix_admin(id_user):
                             gestion.modifier_classe()
                         elif choix_modificatio_etudiants == '5':
                             gestion.modifier_matricule()
+                        elif choix_modificatio_etudiants == '6': 
+                             break
 
-                        elif choix_modificatio_etudiants=='6':
-                             gestion.afficher_meilleurs_etudiants()
-                        elif choix_modificatio_etudiants == '7': 
-                            break
-                elif Choix_menu_ETUDIANTS == '6':  
+                elif Choix_menu_ETUDIANTS=='6':
+                    gestion.afficher_meilleurs_etudiants()
+                
+                elif Choix_menu_ETUDIANTS == '7':  
                     break
                     
         elif choix == '4':
