@@ -1,5 +1,5 @@
 from confige.Menu import  MENU_PRINCIPALE_ADMINE
-from confige.Menu_choix_admin import MENU_GESTION_DES_UTILISATEURS,MENU_GESTION_DES_PROFESSEURS,MENU_GESTION_DES_ETUDIANTS,MENU_MODIFICATION_DES_ETUDIANTS,MENU_GESTION_MODIFICATION_DES_UTILISATEURS
+from confige.Menu_choix_admin import MENU_GESTION_DES_UTILISATEURS,MENU_GESTION_DES_PROFESSEURS,MENU_GESTION_DES_ETUDIANTS,MENU_MODIFICATION_DES_ETUDIANTS,MENU_GESTION_MODIFICATION_DES_UTILISATEURS,MENU_GESTION_MODIFICATION_DES_UTILISATEURS_MATIRER
 from services.service_user import GestionAdmin
 
 def gerer_choix_admin(id_user):
@@ -53,7 +53,16 @@ def gerer_choix_admin(id_user):
                     gestion.rechercher_professeur()
                 elif Choix_Menu_PROFESSEURS == '6':
                     gestion.listes_touts_prof()
-                elif Choix_Menu_PROFESSEURS == '7':  
+                elif Choix_Menu_PROFESSEURS=='7':
+                    while True:
+                        print(MENU_GESTION_MODIFICATION_DES_UTILISATEURS_MATIRER)
+                        Choix_Menu_PROFESSEURS_diffiere=input("entrez votre choix :")
+                        if Choix_Menu_PROFESSEURS_diffiere=='1':
+                            gestion.supprimer_matiere_professeur()
+                        elif Choix_Menu_PROFESSEURS_diffiere=='2':
+                            gestion.modifiere_nom_matiere_professeur()
+                            break     
+                elif Choix_Menu_PROFESSEURS == '8':  
                     break
                     
         elif choix == '3':

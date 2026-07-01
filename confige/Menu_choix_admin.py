@@ -31,7 +31,8 @@ MENU_GESTION_DES_PROFESSEURS = """
                 4. modifier_professeur
                 5. rechercher_professeur
                 6. listes_touts_professeur
-                7. Option de retour au menu admin principal
+                7. modification NOM & SUPPRIMER (MATIERE)
+                8. Option de retour au menu admin principal
                    
 ###############################################################
 """
@@ -89,3 +90,20 @@ MENU_GESTION_MODIFICATION_DES_UTILISATEURS = """
 #                                                             #
 ###############################################################
 """
+
+MENU_GESTION_MODIFICATION_DES_UTILISATEURS_MATIRER = """
+
+###############################################################
+#                                                             #
+#    Bienvenue dans le système des gestion des                #
+#                  modification_des_utilisateur !             #
+#                                                             #
+#  ─────────────────────────────────────────────────────────  #
+#                                                             #
+#         [ 1] supprimer_matiere                              #
+#         [ 2] modifier_matiere_nom                           #
+#                                                             #
+#                                                             #
+###############################################################
+"""
+

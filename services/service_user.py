@@ -170,6 +170,30 @@ class GestionAdmin:
         if success:
             print(f"Matière '{matiere}' pour la classe '{classe}' ajoutée avec succès !")
             logging.info(f"MATIERE :({matiere}) A ÉTÉ CONSIGNEE AU PROFESSEUR ID ({teacher_id}) POUR LA CLASSE ({classe})")
+
+
+
+
+    
+    def supprimer_matiere_professeur(self):
+        id_matiere=input("entez l'id_matiere : ")
+        
+        self.modele_prof_matiere.supprimer_matiere(id_matiere)
+        print(f"LA MATIERE A L'ID {id_matiere} A ÉTÉ SUPPRIMÉ AVCE SUCCES ")
+        logging.info(f"LA MATIERE A L'ID {id_matiere} A ÉTÉ SUPPRIMÉ AVCE SUCCES ")
+
+    def modifiere_nom_matiere_professeur(self):
+        id_matiere=input("entez l'id_matiere : ")
+        matiere=input("entrez le nouveux nom de la matiere : ")
+        self.modele_prof_matiere.modifier_matiere_nom(id_matiere,matiere)
+        print(f"LE NOM DE LA MATIERE A L'ID {id_matiere} A ÉTÉ MODIFIERE ")
+        logging.info(f"LE NOM DE LA MATIERE A L'ID {id_matiere} A ÉTÉ MODIFIERE ")
+
+
+
+
+
+
         
     def supprimer_contenue_matiere(self):
         print("\n    ")

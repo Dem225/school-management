@@ -34,12 +34,12 @@ class Sujet_matiere(ManagerBase):
         self.cusor.execute("DELETE FROM subjects WHERE id = ?", (id_matiere,))
         self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='subjects'")
         self.connecte.commit()
-        print(" Matière supprimée avec succès !")
+    
     
     def modifier_matiere_nom(self, id_matiere, matiere):
         self.cusor.execute(""" UPDATE subjects SET matiere = ? WHERE id = ? """, (matiere, id_matiere))
         self.connecte.commit()
-        print(" Nom de la matière mis à jour !")
+       
 
     def affecter_professeur(self, id_matiere, teacher_id):
         self.cusor.execute("""
