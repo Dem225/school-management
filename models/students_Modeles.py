@@ -82,6 +82,20 @@ class studentsModel(ManagerBase):
         self.cusor.execute("SELECT * FROM students")
         return self.cusor.fetchall()
 
+
+
+    def supprimer_tous_le_contenue_utilisateur(self):
+       
+        self.cusor.execute("DELETE FROM students")
+        
+       
+        self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='students'")
+        
+        
+        self.connecte.commit()
+        
+
+
     def supprimer_tout_table(self):
         self.cusor.execute("DROP TABLE IF EXISTS students")
         self.connecte.commit()

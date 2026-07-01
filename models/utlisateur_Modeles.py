@@ -85,8 +85,13 @@ class Utilisateur(ManagerBase):
 
 
     def supprimer_tous_le_contenue_utilisateur(self):
+       
         self.cusor.execute("DELETE FROM users")
-        self.cusor.execute("DELETE FROM sqlite_sequence WHERE nom='users'")
+        
+       
+        self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='users'")
+        
+        
         self.connecte.commit()
         
     def rechercher_utilisateur(self,id_user):
@@ -119,6 +124,10 @@ class Utilisateur(ManagerBase):
         """
         self.cusor.execute(query, (nombre,))
         return self.cusor.fetchall()
+
+
+   
+
 
 
 

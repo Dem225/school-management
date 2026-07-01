@@ -19,15 +19,15 @@ class GestionAdmin:
         
         nom = input("Entrez votre nom : ").strip()
         role = input("Entrez votre rôle (admin/professeur/étudiant) : ").strip()
-        password = input("Entrez votre mot de passe (Mot de passe interdi ['1234', '1111', '0000', 'admin', 'password']): ").strip()
-        user_name = input("Entrez votre user_name (pseudo) : ").strip()
+        password = input("Entrez votre mot de passe (Mot de passe interdi ['1234', '1111', '0000', 'admin', 'password']) doit comporter au moins (5) caractères. : ").strip()
+        user_name = input("Entrez votre user_name (pseudo) doit comporter au moins 4 caractères.: ").strip()
 
        
         if not nom or not role or not user_name or not password:
             print("\nErreur : Tous les champs doivent être remplis.")
             logging.warning("Tentative d'ajout avec des champs vides.")
             return
-        if len(user_name)<=4:
+        if len(user_name)<=3:
             print("\nErreur : Le user_name doit comporter au moins 4 caractères.")
             logging.warning(f"Mot de passe trop court pour l 'utilisateur {user_name}.")
             return
@@ -128,7 +128,10 @@ class GestionAdmin:
         nom = input("Entrez le nom du professeur : ").strip()
         subject_id = input("Entrez l'ID de la matière enseignée : ").strip()
         id_user = input("Entrez l'ID de l'utilisateur (rôle professeur) : ").strip()
-
+        if not nom or not subject_id or not id_user:
+            print("\nErreur : Tous les champs doivent être remplis.")
+            logging.warning("Tentative d'ajout avec des champs vides.")
+            return
         try:
          
             self.modele_prof.Ajouter(nom, subject_id, id_user)
@@ -227,6 +230,11 @@ class GestionAdmin:
         self.liste_unique()
         id_user = input("Entrez l'id correspondant à l'id de l'utilisateur connecté qui a pour role (etudiant): ").strip()
         
+
+        if not nom or not prenom or not age_input or not classe or not matricule  or not id_user:
+            print("\nErreur : Tous les champs doivent être remplis.")
+            logging.warning("Tentative d'ajout avec des champs vides.")
+            return
        
         self.modele_etudiant.ajouter(nom, prenom, age, classe, matricule, id_user)
         
@@ -236,7 +244,8 @@ class GestionAdmin:
             f"UN ÉTUDIANT a été ajouté (ID User: {id_user}). "
             f"Nom: {nom}, Matricule: {matricule}, Classe: {classe}")
 
-
+        
+   
 
 
 

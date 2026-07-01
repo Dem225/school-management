@@ -60,5 +60,17 @@ class Absence_model(ManagerBase):
         self.connecte.commit()
         print(" La table 'absences' a été définitivement supprimée !")
 
+
+    def supprimer_tous_le_contenue_utilisateur(self):
+       
+        self.cusor.execute("DELETE FROM absences")
+        
+       
+        self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='absences'")
+        
+        
+        self.connecte.commit()
+        
+        
     def close(self):
         self.connecte.close()

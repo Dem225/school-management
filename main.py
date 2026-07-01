@@ -4,6 +4,7 @@ from utils.gestione_teacher import Gere_choix_teacher
 from utils.gestione_students import Gere_choix_student
 from utils.logger import logging
 
+
 def main():
     role, etudiant_id,id_user = CONNEXION_User()  
     
@@ -14,7 +15,8 @@ def main():
         Gere_choix_teacher()  
        
     elif role == 'étudiant':
-        Gere_choix_student(etudiant_id)  
+        Gere_choix_student(etudiant_id)
+
        
 if __name__ == '__main__':
     logging.info("Démarrage de l'application...")

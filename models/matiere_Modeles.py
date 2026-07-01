@@ -72,7 +72,16 @@ class Sujet_matiere(ManagerBase):
         print(" La table 'subjects' a été définitivement supprimée de la base de données !")
         return True
        
-   
+    def supprimer_tous_le_contenue_utilisateur(self):
+       
+        self.cusor.execute("DELETE FROM subjects")
+        
+       
+        self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='subjects'")
+        
+        
+        self.connecte.commit()
+        
 
     def close(self):
         self.connecte.close()

@@ -51,7 +51,16 @@ class ProfesseurModel(ManagerBase):
     def Renommer_columns(self):
         self.cusor.execute("ALTER TABLE teachers RENAME COLUMN matiere TO subject_name;")
     
-
+    def supprimer_tous_le_contenue_utilisateur(self):
+       
+        self.cusor.execute("DELETE FROM teachers")
+        
+       
+        self.cusor.execute("DELETE FROM sqlite_sequence WHERE name='teachers'")
+        
+        
+        self.connecte.commit()
+        
 
     
     def close(self):
