@@ -243,3 +243,13 @@
 2026-07-01 12:45:59 - INFO - Démarrage de l'application...
 2026-07-01 12:46:13 - INFO - Mr ou Md :(ZEBI) pour role (admin) c'est connecter
 2026-07-01 12:47:12 - INFO - LE NOM DE LA MATIERE A L'ID 1 A ÉTÉ MODIFIERE 
+2026-07-02 15:40:43 - INFO - Démarrage de l'application...
+2026-07-02 16:53:41 - INFO - Démarrage de l'application...
+2026-07-02 16:53:52 - INFO - Mr ou Md :(ZEBI) pour role (admin) c'est connecter
+2026-07-02 16:53:59 - WARNING - Tentative d'ajout avec des champs vides.
+2026-07-02 16:54:06 - WARNING - Tentative d'ajout avec des champs vides.
+2026-07-02 16:54:54 - INFO - UNE RECHERCHE A ÉTÉ ÉFFECTUÉ !
+2026-07-02 16:54:54 - INFO - UNE RECHERCHE A ÉTÉ ÉFFECTUÉ !
+2026-07-02 16:54:54 - INFO - UNE RECHERCHE A ÉTÉ ÉFFECTUÉ !
+2026-07-02 16:59:53 - WARNING - Tentative d'ajout avec des champs vides.
+2026-07-02 17:00:33 - ERROR - Échec ajout utilisateur ZEBI : Le pseudo 'ZEBI' est déjà utilisé.
